@@ -591,9 +591,103 @@ input::placeholder, textarea::placeholder { color: #a09060; font-style: italic; 
 
 
 <!-- ══════════════════════════════════════
-     TELA 3 — QUEM, DOR E TRANSFORMAÇÃO
+     TELA 3 — DIAGNÓSTICO DE MÉTODO
 ══════════════════════════════════════ -->
 <section class="screen" id="s3">
+  <div class="inner">
+    <div class="ornament">passo 3 de 8 · diagnóstico de método</div>
+
+    <h2>Você provavelmente já tem mais método do que imagina.<br><em>Vamos descobrir o que já existe aí.</em></h2>
+
+    <p>O problema quase nunca é falta de conhecimento. É falta de nome, ordem e confiança. Responde sem tentar acertar.</p>
+
+    <div class="field" id="fd1">
+      <label>Quando alguém te procura, o que normalmente ela já tentou antes?</label>
+      <textarea id="d-tentou" placeholder="Ex: Ela já fez cursos, tentou criar sozinha, ficou travada na execução…" style="min-height:72px;"></textarea>
+      <div class="err">Conta um pouco sobre isso.</div>
+    </div>
+
+    <div class="field" id="fd2">
+      <label>Qual parte do processo você repete sem perceber em quase todos os atendimentos?</label>
+      <textarea id="d-repete" placeholder="Ex: Sempre começo organizando a história da pessoa antes de qualquer estratégia…" style="min-height:72px;"></textarea>
+      <div class="err">Descreve esse padrão.</div>
+    </div>
+
+    <div class="field" id="fd3">
+      <label>Em que momento da jornada você percebe que a pessoa virou a chave?</label>
+      <textarea id="d-chave" placeholder="Ex: Quando ela para de se comparar e começa a confiar no que já tem…" style="min-height:72px;"></textarea>
+      <div class="err">Descreve esse momento.</div>
+    </div>
+
+    <div class="field" id="fd4">
+      <label>O que você faz diferente da maioria sem nem considerar um diferencial?</label>
+      <textarea id="d-diferente" placeholder="Ex: Eu nunca pulo a etapa de clareza antes de falar de estratégia…" style="min-height:72px;"></textarea>
+      <div class="err">Descreve o que é natural para você.</div>
+    </div>
+
+    <div class="field" id="fd5">
+      <label>Se amanhã você tivesse que ensinar seu processo para outra profissional aplicar, por onde ela começaria?</label>
+      <textarea id="d-ensinar" placeholder="Ex: Pelo diagnóstico da identidade — sem isso nada funciona…" style="min-height:72px;"></textarea>
+      <div class="err">Descreve o ponto de partida.</div>
+    </div>
+
+    <div class="field" id="fd6">
+      <label>O que você nunca mais acredita que sua cliente deveria aceitar como normal?</label>
+      <textarea id="d-normal" placeholder="Ex: Trabalhar muito e ganhar pouco por falta de posicionamento…" style="min-height:72px;"></textarea>
+      <div class="err">Descreve essa crença.</div>
+    </div>
+
+    <button class="btn" onclick="gerarDiagnosticoMetodo()" style="margin-top:8px;">
+      Ver meu diagnóstico de método <span class="arr">→</span>
+    </button>
+
+    <div class="rule" style="margin-top:32px;"></div>
+
+    <p style="font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-bottom:8px;">Travou aqui?</p>
+    <p style="font-size:.82rem; color:var(--muted); margin-bottom:16px;">Sem problema. Posso te ajudar a clarear isso numa conversa rápida.</p>
+    <a href="https://wa.me/5598999012270?text=Ol%C3%A1+Jade%2C+fiz+a+ferramenta+e+travei+no+diagn%C3%B3stico+de+m%C3%A9todo.+Quero+uma+ajuda!" target="_blank" style="text-decoration:none; display:flex; justify-content:center;">
+      <button style="background:#25D366;color:#fff;border:none;padding:14px 28px;font-family:'DM Mono',monospace;font-size:.68rem;font-weight:400;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;border-radius:50px;display:inline-flex;align-items:center;gap:10px;box-shadow:0 0 16px rgba(37,211,102,0.35);"
+      onmouseover="this.style.transform='translateY(-1px)'" onmouseout="this.style.transform='translateY(0)'">
+        Quero ajuda para clarear meu método
+      </button>
+    </a>
+  </div>
+  <div class="footer-note">Ferramenta gratuita · Jade Torres · 12 Semanas no Ar</div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     TELA 3B — ESPELHO DO MÉTODO
+══════════════════════════════════════ -->
+<section class="screen" id="s3b">
+  <div class="inner">
+    <div class="ornament">passo 3 de 8 · seu espelho</div>
+
+    <h1>Você não está começando do zero.<br><em>Seu método já existe.</em></h1>
+
+    <p>Olha o que apareceu no seu diagnóstico:</p>
+
+    <div class="method-box" id="espelho-box" style="margin: 20px 0;">
+      <div class="method-label">O que já existe no seu trabalho</div>
+      <div class="method-txt" id="espelho-txt">—</div>
+    </div>
+
+    <div class="callout">
+      <p id="espelho-frase">—</p>
+    </div>
+
+    <button class="btn" onclick="goTo(4)">
+      Construir meu programa agora <span class="arr">→</span>
+    </button>
+  </div>
+  <div class="footer-note">Ferramenta gratuita · Jade Torres · 12 Semanas no Ar</div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     TELA 4 — QUEM, DOR E TRANSFORMAÇÃO
+══════════════════════════════════════ -->
+<section class="screen" id="s4">
   <div class="inner">
     <div class="ornament">passo 3 de 7 · seu método</div>
 
@@ -625,8 +719,12 @@ input::placeholder, textarea::placeholder { color: #a09060; font-style: italic; 
 
     <div class="rule" style="margin-top: 36px;"></div>
 
+    <div class="callout">
+      <p>Desenvolva o que está em sua mente e envie para a Jade solicitando uma análise. Você não precisa ter tudo perfeito para avançar — o que você escrever já é suficiente para começarmos juntas.</p>
+    </div>
+
     <!-- Gatilho de convite -->
-    <p style="font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-bottom:8px;">Travou aqui?</p>
+    <p style="font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-bottom:8px; margin-top: 20px;">Travou aqui?</p>
     <p style="font-size:.82rem; color:var(--muted); margin-bottom:16px;">Sem problema. Posso te ajudar a clarear isso numa conversa rápida. Clica abaixo e me chama no WhatsApp.</p>
     <a href="https://wa.me/5598999012270?text=Ol%C3%A1+Jade%2C+fiz+a+ferramenta+e+travei+na+parte+do+m%C3%A9todo.+Quero+uma+ajuda!" target="_blank" style="text-decoration:none; display:flex; justify-content:center;">
       <button style="
@@ -661,9 +759,9 @@ input::placeholder, textarea::placeholder { color: #a09060; font-style: italic; 
 <!-- ══════════════════════════════════════
      TELA 4 — PASSOS DO MÉTODO
 ══════════════════════════════════════ -->
-<section class="screen" id="s4">
+<section class="screen" id="s5">
   <div class="inner">
-    <div class="ornament">passo 4 de 7 · passos do método</div>
+    <div class="ornament">passo 5 de 8 · passos do método</div>
 
     <h2>Agora descreva o passo a passo do seu método.</h2>
 
@@ -732,11 +830,11 @@ input::placeholder, textarea::placeholder { color: #a09060; font-style: italic; 
 <!-- ══════════════════════════════════════
      TELA 5 — ESBOÇO DO MÉTODO
 ══════════════════════════════════════ -->
-<section class="screen" id="s5">
+<section class="screen" id="s6">
   <div class="inner">
-    <div class="ornament">passo 5 de 7 · esboço do método</div>
+    <div class="ornament">passo 6 de 8 · esboço do método</div>
 
-    <h2>Uauuuu, <em id="nome-s5">—</em></h2>
+    <h2>Uauuuu, <em id="nome-s6">—</em></h2>
 
     <p>Mesmo que não seja o desenho perfeito ainda, isso aqui é simplesmente um resumo do propósito da sua mensagem que pode impactar o mundo, através do digital.</p>
 
@@ -751,7 +849,7 @@ input::placeholder, textarea::placeholder { color: #a09060; font-style: italic; 
       <p>Método pronto é o ponto de partida. O próximo passo é decidir como você vai entregar isso às pessoas. Se foi difícil escrever, fique tranquila. Existem vários caminhos que podem clarear seu processo de construção. Avance para saber!</p>
     </div>
 
-    <button class="btn" onclick="goTo(6)">
+    <button class="btn" onclick="goTo(7)">
       Entendi Jade. Agora vou montar meu programa <span class="arr">→</span>
     </button>
   </div>
@@ -759,54 +857,10 @@ input::placeholder, textarea::placeholder { color: #a09060; font-style: italic; 
 </section>
 
 
-<!-- ══════════════════════════════════════
-     TELA 6 — CANAIS DE ENTREGA
-══════════════════════════════════════ -->
-<section class="screen" id="s6">
-  <div class="inner">
-    <div class="ornament">passo 6 de 7 · seu programa</div>
-
-    <h2>Perfeito <span id="nome-s6"></span>, agora que o método está desenhado,<br><em>escolha como você vai entregar!</em></h2>
-
-    <p>O programa é o conjunto de canais e formatos que você usa para entregar o seu método. Se quiser marcar tudo, fique à vontade.</p>
-
-    <div class="choices" id="canais-grid" style="margin: 20px 0;">
-      <div class="choice canal" onclick="toggleCanal(this)">
-        <div class="dot"></div>
-        <span class="choice-txt">Metodologia gravada em vídeo</span>
-      </div>
-      <div class="choice canal" onclick="toggleCanal(this)">
-        <div class="dot"></div>
-        <span class="choice-txt">Ferramentas e materiais de apoio</span>
-      </div>
-      <div class="choice canal" onclick="toggleCanal(this)">
-        <div class="dot"></div>
-        <span class="choice-txt">Acompanhamento via WhatsApp</span>
-      </div>
-      <div class="choice canal" onclick="toggleCanal(this)">
-        <div class="dot"></div>
-        <span class="choice-txt">Encontros individuais ao vivo</span>
-      </div>
-      <div class="choice canal" onclick="toggleCanal(this)">
-        <div class="dot"></div>
-        <span class="choice-txt">Aulas ao vivo em grupo</span>
-      </div>
-      <div class="choice canal" onclick="toggleCanal(this)">
-        <div class="dot"></div>
-        <span class="choice-txt">Comunidade ou grupo exclusivo</span>
-      </div>
-    </div>
-
-    <button class="btn" id="btn-av6" onclick="gerarPrograma()" style="margin-top:8px;">
-      Ver meu programa completo <span class="arr">→</span>
-    </button>
-  </div>
-  <div class="footer-note">Ferramenta gratuita · Jade Torres · 12 Semanas no Ar</div>
-</section>
 
 
 <!-- ══════════════════════════════════════
-     TELA 7 — CTA FINAL
+     TELA 6 — CTA FINAL
 ══════════════════════════════════════ -->
 <section class="screen" id="s7">
   <div class="inner">
@@ -914,17 +968,16 @@ function goTo(n) {
   // Injeta nome na tela 3
 
   // Injeta nome na tela 6
-  if (n === 6) {
-    var nome2 = document.getElementById('v-nome').value.trim();
-    var pn2 = nome2 ? nome2.split(' ')[0] : '';
-    var el2 = document.getElementById('nome-s6');
-    if (el2 && pn2) el2.textContent = pn2 + ',';
-  }
 }
 
 function updateBar() {
-  document.getElementById('progress').style.width = (cur / 7 * 100) + '%';
-  document.getElementById('step-label').textContent = pad(cur) + ' / ' + pad(7);
+  var step = cur === '3b' ? 3 : cur;
+  document.getElementById('progress').style.width = (step / 8 * 100) + '%';
+  if (cur === '3b') {
+    document.getElementById('step-label').textContent = '03 / 08';
+  } else {
+    document.getElementById('step-label').textContent = pad(cur) + ' / ' + pad(8);
+  }
   atualizarBotaoVoltar();
 }
 
@@ -933,7 +986,7 @@ function pad(n) { return n < 10 ? '0' + n : n; }
 function voltar() {
   if (cur <= 1) return;
   // Map current screen to previous
-  var prev = {2:1, 3:2, 4:3, 5:4, 6:5, 7:6};
+  var prev = {2:1, 3:2, '3b':3, 4:'3b', 5:4, 6:5, 7:6};
   if (prev[cur] !== undefined) goTo(prev[cur]);
 }
 
@@ -941,7 +994,7 @@ function atualizarBotaoVoltar() {
   var btn = document.getElementById('btn-back');
   if (!btn) return;
   // Show on screens 2-7, hide on 1
-  btn.style.display = (cur >= 2) ? 'block' : 'none';
+  btn.style.display = (cur >= 2 || cur === '3b') ? 'block' : 'none';
 }
 
 // ── TELA 1 ──
@@ -995,6 +1048,55 @@ function abrirDiagnostico(event) {
 
 
 
+// ── TELA 3: DIAGNÓSTICO DE MÉTODO ──
+function gerarDiagnosticoMetodo() {
+  var tentou    = document.getElementById('d-tentou').value.trim();
+  var repete    = document.getElementById('d-repete').value.trim();
+  var chave     = document.getElementById('d-chave').value.trim();
+  var diferente = document.getElementById('d-diferente').value.trim();
+  var ensinar   = document.getElementById('d-ensinar').value.trim();
+  var normal    = document.getElementById('d-normal').value.trim();
+
+  var fields = ['fd1','fd2','fd3','fd4','fd5','fd6'];
+  fields.forEach(function(id){ document.getElementById(id).classList.remove('bad'); });
+
+  var ok = true;
+  if (!tentou)    { document.getElementById('fd1').classList.add('bad'); ok = false; }
+  if (!repete)    { document.getElementById('fd2').classList.add('bad'); ok = false; }
+  if (!chave)     { document.getElementById('fd3').classList.add('bad'); ok = false; }
+  if (!diferente) { document.getElementById('fd4').classList.add('bad'); ok = false; }
+  if (!ensinar)   { document.getElementById('fd5').classList.add('bad'); ok = false; }
+  if (!normal)    { document.getElementById('fd6').classList.add('bad'); ok = false; }
+  if (!ok) return;
+
+  var nome = document.getElementById('v-nome').value.trim();
+  var pn   = nome.split(' ')[0];
+
+  // Detecta padrão dominante
+  var tipos = [];
+  var texto = (tentou + repete + chave + diferente + ensinar + normal).toLowerCase();
+  if (texto.match(/transfor|result|mudan|vida|impacto/)) tipos.push('Transformação');
+  if (texto.match(/estrutur|organiz|sistema|método|passo|etapa/)) tipos.push('Estrutura');
+  if (texto.match(/process|jornada|caminho|sequenc/)) tipos.push('Processo');
+  if (texto.match(/posicion|mensag|comunicar|diferenci|marca/)) tipos.push('Posicionamento');
+  if (tipos.length === 0) tipos.push('Transformação', 'Estrutura');
+
+  var espelhoHTML =
+    '<strong>O que ela já tentou antes de te procurar:</strong><br>' + tentou + '<br><br>' +
+    '<strong>O que você repete naturalmente:</strong><br>' + repete + '<br><br>' +
+    '<strong>O momento da virada:</strong><br>' + chave + '<br><br>' +
+    '<strong>Seu diferencial invisível:</strong><br>' + diferente + '<br><br>' +
+    '<strong>Por onde seu processo começa:</strong><br>' + ensinar + '<br><br>' +
+    '<strong>O que você não aceita mais como normal:</strong><br>' + normal;
+
+  var frase = pn + ', seu padrão indica uma base forte de <strong>' + tipos.join(' + ') +
+    '</strong>. Você já conduz pessoas por um caminho com começo, meio e fim. Agora vamos transformar isso num método ensinável.';
+
+  goTo('3b');
+  document.getElementById('espelho-txt').innerHTML = espelhoHTML;
+  document.getElementById('espelho-frase').innerHTML = frase;
+}
+
 // ── TELA 3: AVANÇAR PARA PASSOS ──
 function avancarParaPassos() {
   var publico = document.getElementById('t-publico').value.trim();
@@ -1007,7 +1109,7 @@ function avancarParaPassos() {
   if (!dor)     { document.getElementById('fm2').classList.add('bad'); return; }
   if (!res)     { document.getElementById('fm3').classList.add('bad'); return; }
 
-  goTo(4);
+  goTo(5);
 }
 
 // ── TELA 4: ADICIONAR PASSO ──
@@ -1046,12 +1148,12 @@ function gerarMetodo() {
   ['fm1','fm2','fm3'].forEach(function(id){ document.getElementById(id).classList.remove('bad'); });
 
   // Navega para tela 4
-  goTo(5);
+  goTo(6);
 
   // Preenche esboço
   var nome  = document.getElementById('v-nome').value.trim();
   var pn    = nome.split(' ')[0];
-  document.getElementById('nome-s5').textContent = pn + '!';
+  document.getElementById('nome-s6').textContent = pn + '!';
 
   var stmt = 'Eu ajudo <strong>' + publico + '</strong> que sofrem com <strong>' + dor + '</strong>, para que conquistem <strong>' + res + '</strong>.';
   document.getElementById('metodo-txt-s5').innerHTML = stmt;
@@ -1060,48 +1162,6 @@ function gerarMetodo() {
     return '<div class="vi"><div class="vi-n">0'+(i+1)+'</div><div class="vi-t">'+p+'</div></div>';
   }).join('');
   document.getElementById('passos-esboço').innerHTML = '<div class="visions">' + passosHTML + '</div>';
-}
-
-// ── TELA 6: TOGGLE CANAL ──
-function toggleCanal(el) {
-  el.classList.toggle('on');
-}
-
-// ── TELA 6: GERAR PROGRAMA ──
-function gerarPrograma() {
-  var canais = Array.from(document.querySelectorAll('.canal.on'))
-                 .map(function(el){ return el.querySelector('.choice-txt').textContent; });
-
-  if (canais.length === 0) {
-    alert('Seleciona pelo menos um canal de entrega.');
-    return;
-  }
-
-  goTo(7);
-
-  // Preenche programa
-  var publico = document.getElementById('t-publico').value.trim();
-  var dor     = document.getElementById('t-dor').value.trim();
-  var res     = document.getElementById('t-res').value.trim();
-  var passos  = Array.from(document.querySelectorAll('.passo-input'))
-                  .map(function(i){ return i.value.trim(); })
-                  .filter(function(v){ return v !== ''; });
-
-  var metodoHTML = '<strong>Para quem:</strong> ' + publico + '<br><br>' +
-    '<strong>Dor que resolve:</strong> ' + dor + '<br><br>' +
-    '<strong>Transformação:</strong> ' + res + '<br><br>' +
-    '<strong>Passos do método:</strong><br>' +
-    passos.map(function(p,i){ return '0'+(i+1)+'. '+p; }).join('<br>') + '<br><br>' +
-    '<strong>Canais de entrega:</strong><br>' +
-    canais.map(function(c){ return '✦ '+c; }).join('<br>');
-
-  document.getElementById('programa-txt').innerHTML = metodoHTML;
-
-  // Nome personalizado no título
-  var nome = document.getElementById('v-nome').value.trim();
-  var pn   = nome.split(' ')[0];
-  document.getElementById('h1-s7').innerHTML = pn + ', você tem um método e um programa desenhado.<br><em>Agora é hora de tirar tudo do papel e se tornar uma mentora que escala suas vendas sem negociar sua agenda.</em>';
-  montarLinkWhatsApp();
 }
 
 // ── TELA 7: MONTA LINK WHATSAPP ──
