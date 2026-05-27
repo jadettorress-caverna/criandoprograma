@@ -595,7 +595,7 @@ input::placeholder, textarea::placeholder { color: #a09060; font-style: italic; 
 ══════════════════════════════════════ -->
 <section class="screen" id="s3">
   <div class="inner">
-    <div class="ornament">passo 3 de 8 · diagnóstico de método</div>
+    <div class="ornament">passo 3 de 7 · diagnóstico de método</div>
 
     <h2>Você provavelmente já tem mais método do que imagina.<br><em>Vamos descobrir o que já existe aí.</em></h2>
 
@@ -638,19 +638,9 @@ input::placeholder, textarea::placeholder { color: #a09060; font-style: italic; 
     </div>
 
     <button class="btn" onclick="gerarDiagnosticoMetodo()" style="margin-top:8px;">
-      Ver meu diagnóstico de método <span class="arr">→</span>
+      Clique aqui se já preencheu todos os campos <span class="arr">→</span>
     </button>
 
-    <div class="rule" style="margin-top:32px;"></div>
-
-    <p style="font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-bottom:8px;">Travou aqui?</p>
-    <p style="font-size:.82rem; color:var(--muted); margin-bottom:16px;">Sem problema. Posso te ajudar a clarear isso numa conversa rápida.</p>
-    <a href="https://wa.me/5598999012270?text=Ol%C3%A1+Jade%2C+fiz+a+ferramenta+e+travei+no+diagn%C3%B3stico+de+m%C3%A9todo.+Quero+uma+ajuda!" target="_blank" style="text-decoration:none; display:flex; justify-content:center;">
-      <button style="background:#25D366;color:#fff;border:none;padding:14px 28px;font-family:'DM Mono',monospace;font-size:.68rem;font-weight:400;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;border-radius:50px;display:inline-flex;align-items:center;gap:10px;box-shadow:0 0 16px rgba(37,211,102,0.35);"
-      onmouseover="this.style.transform='translateY(-1px)'" onmouseout="this.style.transform='translateY(0)'">
-        Quero ajuda para clarear meu método
-      </button>
-    </a>
   </div>
   <div class="footer-note">Ferramenta gratuita · Jade Torres · 12 Semanas no Ar</div>
 </section>
@@ -661,23 +651,49 @@ input::placeholder, textarea::placeholder { color: #a09060; font-style: italic; 
 ══════════════════════════════════════ -->
 <section class="screen" id="s3b">
   <div class="inner">
-    <div class="ornament">passo 3 de 8 · seu espelho</div>
+    <div class="ornament">passo 3 de 7 · seu espelho</div>
 
     <h1>Você não está começando do zero.<br><em>Seu método já existe.</em></h1>
 
-    <p>Olha o que apareceu no seu diagnóstico:</p>
+    <p>Agora me diga, como foi responder essas perguntas?</p>
 
-    <div class="method-box" id="espelho-box" style="margin: 20px 0;">
-      <div class="method-label">O que já existe no seu trabalho</div>
-      <div class="method-txt" id="espelho-txt">—</div>
+<p id="espelho-frase" style="display:none"></p>
+
+    <div class="rule"></div>
+
+    <p id="classif-nome-label" style="font-family:'Cormorant Garamond',serif; font-size:1.15rem; font-style:italic; color:var(--text); margin-bottom:18px; line-height:1.5;"></p>
+
+    <div class="choices" id="classif-grid">
+      <div class="choice classif-card" onclick="escolherClassificacao(this, 1)">
+        <div class="dot"></div>
+        <span class="choice-txt">Super fácil de escrever — tenho clareza do meu público e da minha entrega</span>
+      </div>
+      <div class="choice classif-card" onclick="escolherClassificacao(this, 2)">
+        <div class="dot"></div>
+        <span class="choice-txt">Demorei um pouco e ainda tenho dúvidas sobre o meu método</span>
+      </div>
+      <div class="choice classif-card" onclick="escolherClassificacao(this, 3)">
+        <div class="dot"></div>
+        <span class="choice-txt">Nossa, foi difícil — tenho muito conhecimento e ainda não consigo subnichar</span>
+      </div>
     </div>
 
-    <div class="callout">
-      <p id="espelho-frase">—</p>
+    <div class="callout" id="classif-resposta" style="display:none; margin-top:20px;">
+      <p id="classif-msg">—</p>
     </div>
 
-    <button class="btn" onclick="goTo(4)">
-      Construir meu programa agora <span class="arr">→</span>
+    <a id="classif-wa" href="#" target="_blank" style="display:none; text-decoration:none; justify-content:center; margin-top:16px;">
+      <button style="background:#25D366;color:#fff;border:none;padding:14px 28px;font-family:'DM Mono',monospace;font-size:.68rem;font-weight:400;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;border-radius:50px;display:inline-flex;align-items:center;gap:10px;box-shadow:0 0 16px rgba(37,211,102,0.35);"
+      onmouseover="this.style.transform='translateY(-1px)'" onmouseout="this.style.transform='translateY(0)'">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.524 5.862L.057 23.857a.5.5 0 0 0 .609.609l6.054-1.459A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.686-.5-5.22-1.373l-.374-.214-3.875.933.95-3.794-.234-.384A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        <span id="classif-wa-label">Falar com a Jade</span>
+      </button>
+    </a>
+
+    <div class="rule"></div>
+
+    <button class="btn" onclick="goTo(4)" style="margin-top:8px;">
+      Perfeito, siga para o seu método! <span class="arr">→</span>
     </button>
   </div>
   <div class="footer-note">Ferramenta gratuita · Jade Torres · 12 Semanas no Ar</div>
@@ -723,10 +739,6 @@ input::placeholder, textarea::placeholder { color: #a09060; font-style: italic; 
       <p>Desenvolva o que está em sua mente e envie para a Jade solicitando uma análise. Você não precisa ter tudo perfeito para avançar — o que você escrever já é suficiente para começarmos juntas.</p>
     </div>
 
-    <!-- Gatilho de convite -->
-    <p style="font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-bottom:8px; margin-top: 20px;">Travou aqui?</p>
-    <p style="font-size:.82rem; color:var(--muted); margin-bottom:16px;">Sem problema. Posso te ajudar a clarear isso numa conversa rápida. Clica abaixo e me chama no WhatsApp.</p>
-    <a href="https://wa.me/5598999012270?text=Ol%C3%A1+Jade%2C+fiz+a+ferramenta+e+travei+na+parte+do+m%C3%A9todo.+Quero+uma+ajuda!" target="_blank" style="text-decoration:none; display:flex; justify-content:center;">
       <button style="
         background: #25D366;
         color: #fff;
@@ -761,7 +773,7 @@ input::placeholder, textarea::placeholder { color: #a09060; font-style: italic; 
 ══════════════════════════════════════ -->
 <section class="screen" id="s5">
   <div class="inner">
-    <div class="ornament">passo 5 de 8 · passos do método</div>
+    <div class="ornament">passo 5 de 7 · passos do método</div>
 
     <h2>Agora descreva o passo a passo do seu método.</h2>
 
@@ -792,86 +804,32 @@ input::placeholder, textarea::placeholder { color: #a09060; font-style: italic; 
       Ver o esboço do meu método <span class="arr">→</span>
     </button>
 
-    <div class="rule" style="margin-top: 36px;"></div>
-
-    <!-- Gatilho de convite -->
-    <p style="font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-bottom:8px;">Travou nos passos?</p>
-    <p style="font-size:.82rem; color:var(--muted); margin-bottom:16px;">Isso é mais comum do que parece. Me chama no WhatsApp e a gente resolve juntas.</p>
-    <a href="https://wa.me/5598999012270?text=Ol%C3%A1+Jade%2C+fiz+a+ferramenta+e+travei+nos+passos+do+m%C3%A9todo.+Quero+uma+ajuda!" target="_blank" style="text-decoration:none; display:flex; justify-content:center;">
-      <button style="
-        background: #25D366;
-        color: #fff;
-        border: none;
-        padding: 14px 28px;
-        font-family: 'DM Mono', monospace;
-        font-size: .68rem;
-        font-weight: 400;
-        letter-spacing: .14em;
-        text-transform: uppercase;
-        cursor: pointer;
-        border-radius: 50px;
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        box-shadow: 0 0 16px rgba(37,211,102,0.35);
-        transition: box-shadow .2s, transform .15s;
-      "
-      onmouseover="this.style.transform='translateY(-1px)'"
-      onmouseout="this.style.transform='translateY(0)'">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.524 5.862L.057 23.857a.5.5 0 0 0 .609.609l6.054-1.459A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.686-.5-5.22-1.373l-.374-.214-3.875.933.95-3.794-.234-.384A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-        Quero ajuda para descrever os passos
-      </button>
-    </a>
   </div>
   <div class="footer-note">Ferramenta gratuita · Jade Torres · 12 Semanas no Ar</div>
 </section>
 
 
 <!-- ══════════════════════════════════════
-     TELA 5 — ESBOÇO DO MÉTODO
+     TELA 6 — ESBOÇO + CTA FINAL
 ══════════════════════════════════════ -->
 <section class="screen" id="s6">
   <div class="inner">
-    <div class="ornament">passo 6 de 8 · esboço do método</div>
+    <div class="ornament">passo 6 de 7 · seu método e próximos passos</div>
 
-    <h2>Uauuuu, <em id="nome-s6">—</em></h2>
+    <h1 id="h1-s7">Você tem um método.<br><em>Agora você precisa de estrutura para tirar isso do papel.</em></h1>
 
-    <p>Mesmo que não seja o desenho perfeito ainda, isso aqui é simplesmente um resumo do propósito da sua mensagem que pode impactar o mundo, através do digital.</p>
-
+    <!-- Esboço do método -->
     <div class="method-box" id="metodo-box-s5" style="margin: 24px 0;">
       <div class="method-label">Seu método</div>
       <div class="method-txt" id="metodo-txt-s5">—</div>
     </div>
 
-    <div id="passos-esboço" style="margin: 0 0 24px;"></div>
+    <div id="passos-esboço" style="margin: 0 0 28px;"></div>
 
-    <div class="callout">
-      <p>Método pronto é o ponto de partida. O próximo passo é decidir como você vai entregar isso às pessoas. Se foi difícil escrever, fique tranquila. Existem vários caminhos que podem clarear seu processo de construção. Avance para saber!</p>
-    </div>
-
-    <button class="btn" onclick="goTo(7)">
-      Entendi Jade. Agora vou montar meu programa <span class="arr">→</span>
-    </button>
-  </div>
-  <div class="footer-note">Ferramenta gratuita · Jade Torres · 12 Semanas no Ar</div>
-</section>
-
-
-
-
-<!-- ══════════════════════════════════════
-     TELA 6 — CTA FINAL
-══════════════════════════════════════ -->
-<section class="screen" id="s7">
-  <div class="inner">
-    <div class="ornament">12 semanas no ar · caverna das guerreiras</div>
-
-    <h1 id="h1-s7">Você tem um método.<br>Você tem um programa.<br><em>Agora você precisa de estrutura para tirar isso do papel.</em></h1>
-
-    <!-- Vídeo da Jade — logo após o cabeçalho -->
     <div class="rule"></div>
+
+    <!-- Vídeo da Jade -->
     <p style="font-size:.62rem; letter-spacing:.06em; text-transform:none; color:var(--dim); margin-bottom:12px;">Uma mensagem da Jade para você</p>
-    <!-- ⚠️ Substitua SEU_VIDEO_ID pelo ID do seu vídeo no YouTube -->
     <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border:1px solid var(--border); margin-bottom:24px;">
       <iframe
         id="video-jade"
@@ -885,31 +843,14 @@ input::placeholder, textarea::placeholder { color: #a09060; font-style: italic; 
     </div>
 
     <div class="callout">
-      <p>Você fez o diagnóstico. Desenhou o método. Montou o programa. Faço questão de olhar o seu esboço e te dar um retorno pessoalmente. É só baixar e me enviar pelo WhatsApp.</p>
+      <p>Você fez o diagnóstico. Desenhou o método. Faço questão de olhar o seu esboço e te dar um retorno pessoalmente. É só baixar e me enviar pelo WhatsApp.</p>
     </div>
 
     <!-- Botão WhatsApp -->
     <a id="btn-whatsapp" href="#" target="_blank" style="text-decoration:none; display:flex; justify-content:center; margin-top:16px;">
-      <button style="
-        background: #25D366;
-        color: #fff;
-        border: none;
-        padding: 16px 32px;
-        font-family: 'DM Mono', monospace;
-        font-size: .7rem;
-        font-weight: 400;
-        letter-spacing: .16em;
-        text-transform: uppercase;
-        cursor: pointer;
-        border-radius: 50px;
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        box-shadow: 0 0 20px rgba(37,211,102,0.4), 0 0 40px rgba(37,211,102,0.15);
-        transition: box-shadow .2s, transform .15s;
-      "
-      onmouseover="this.style.boxShadow='0 0 28px rgba(37,211,102,0.6), 0 0 56px rgba(37,211,102,0.25)'; this.style.transform='translateY(-1px)'"
-      onmouseout="this.style.boxShadow='0 0 20px rgba(37,211,102,0.4), 0 0 40px rgba(37,211,102,0.15)'; this.style.transform='translateY(0)'">
+      <button style="background:#25D366;color:#fff;border:none;padding:16px 32px;font-family:'DM Mono',monospace;font-size:.7rem;font-weight:400;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;border-radius:50px;display:inline-flex;align-items:center;gap:10px;box-shadow:0 0 20px rgba(37,211,102,0.4),0 0 40px rgba(37,211,102,0.15);transition:box-shadow .2s,transform .15s;"
+      onmouseover="this.style.boxShadow='0 0 28px rgba(37,211,102,0.6),0 0 56px rgba(37,211,102,0.25)';this.style.transform='translateY(-1px)'"
+      onmouseout="this.style.boxShadow='0 0 20px rgba(37,211,102,0.4),0 0 40px rgba(37,211,102,0.15)';this.style.transform='translateY(0)'">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.524 5.862L.057 23.857a.5.5 0 0 0 .609.609l6.054-1.459A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.686-.5-5.22-1.373l-.374-.214-3.875.933.95-3.794-.234-.384A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
         Enviar para a Jade no WhatsApp
       </button>
@@ -921,18 +862,12 @@ input::placeholder, textarea::placeholder { color: #a09060; font-style: italic; 
 
     <div class="rule"></div>
 
-    <!-- Programa gerado -->
-    <div class="method-box" id="programa-box" style="margin: 0 0 24px;">
-      <div class="method-label">Seu programa</div>
-      <div class="method-txt" id="programa-txt">—</div>
-    </div>
-
-    <!-- Botão baixar — após o desenho do programa -->
-    <button class="btn" onclick="baixarPDF()" style="width:100%; justify-content:center; padding:18px 36px; font-size:.72rem; margin-bottom:28px; box-shadow: 0 0 24px rgba(201,168,76,0.35), 0 0 48px rgba(201,168,76,0.15);">
+    <!-- Botão baixar -->
+    <button class="btn" onclick="baixarPDF()" style="width:100%; justify-content:center; padding:18px 36px; font-size:.72rem; margin-bottom:28px; box-shadow:0 0 24px rgba(201,168,76,0.35),0 0 48px rgba(201,168,76,0.15);">
       Baixar meu esboço <span class="arr">↓</span>
     </button>
 
-    <!-- Bio da Jade no final -->
+    <!-- Bio da Jade -->
     <div class="jade-card">
       <div class="jade-av">J</div>
       <div class="jade-info">
@@ -965,18 +900,17 @@ function goTo(n) {
   document.getElementById('s' + n).classList.add('active');
   updateBar();
   window.scrollTo({ top: 0, behavior: 'smooth' });
-  // Injeta nome na tela 3
-
-  // Injeta nome na tela 6
+  // Monta link WhatsApp ao chegar na tela 7
+  if (n === 6) { montarLinkWhatsApp(); }
 }
 
 function updateBar() {
   var step = cur === '3b' ? 3 : cur;
-  document.getElementById('progress').style.width = (step / 8 * 100) + '%';
+  document.getElementById('progress').style.width = (step / 7 * 100) + '%';
   if (cur === '3b') {
-    document.getElementById('step-label').textContent = '03 / 08';
+    document.getElementById('step-label').textContent = '03 / 07';
   } else {
-    document.getElementById('step-label').textContent = pad(cur) + ' / ' + pad(8);
+    document.getElementById('step-label').textContent = pad(cur) + ' / ' + pad(7);
   }
   atualizarBotaoVoltar();
 }
@@ -986,7 +920,7 @@ function pad(n) { return n < 10 ? '0' + n : n; }
 function voltar() {
   if (cur <= 1) return;
   // Map current screen to previous
-  var prev = {2:1, 3:2, '3b':3, 4:'3b', 5:4, 6:5, 7:6};
+  var prev = {2:1, 3:2, '3b':3, 4:'3b', 5:4, 6:5};
   if (prev[cur] !== undefined) goTo(prev[cur]);
 }
 
@@ -1094,7 +1028,50 @@ function gerarDiagnosticoMetodo() {
 
   goTo('3b');
   document.getElementById('espelho-txt').innerHTML = espelhoHTML;
+  var labelEl = document.getElementById('classif-nome-label');
+  if (labelEl) labelEl.textContent = pn + ', como você classifica seu preenchimento?';
   document.getElementById('espelho-frase').innerHTML = frase;
+}
+
+// ── TELA 3B: CLASSIFICAÇÃO ──
+function escolherClassificacao(el, nivel) {
+  // Highlight selecionado
+  document.querySelectorAll('.classif-card').forEach(function(c){ c.classList.remove('on'); });
+  el.classList.add('on');
+
+  var nome = document.getElementById('v-nome').value.trim();
+  var pn   = nome.split(' ')[0];
+
+  var msgs = {
+    1: {
+      texto: pn + ', que incrível! Você tem clareza e isso é raro. Uma expert que sabe exatamente para quem fala e o que entrega está pronta para escalar. Seu próximo passo é estruturar isso num programa que trabalhe por você.',
+      wa: 'Olá Jade! Fiz a ferramenta e fui classificada no nível 1. Tenho clareza do meu método e quero saber como estruturar meu programa.',
+      label: 'Quero estruturar meu programa com a Jade'
+    },
+    2: {
+      texto: pn + ', isso é completamente normal. Ter dúvidas não significa falta de conhecimento — significa que você ainda não organizou o que já sabe. É exatamente aqui que eu consigo te ajudar a clarear e transformar isso em método.',
+      wa: 'Olá Jade! Fiz a ferramenta e fui classificada no nível 2. Ainda tenho dúvidas sobre meu método e quero uma ajuda para clarear.',
+      label: 'Quero clarear meu método com a Jade'
+    },
+    3: {
+      texto: pn + ', esse é o sinal mais claro de que você tem muito a entregar. Quem tem muito conhecimento muitas vezes trava justamente por não saber por onde começar. Eu já ajudei dezenas de experts nesse exato ponto — e é exatamente para isso que existe a Caverna.',
+      wa: 'Olá Jade! Fiz a ferramenta e fui classificada no nível 3. Tenho muito conhecimento mas travei na hora de organizar. Preciso de ajuda para subnichar e estruturar.',
+      label: 'Preciso de ajuda para organizar meu método'
+    }
+  };
+
+  var m = msgs[nivel];
+  document.getElementById('classif-msg').textContent = m.texto;
+  document.getElementById('classif-resposta').style.display = 'block';
+
+  var waEl = document.getElementById('classif-wa');
+  waEl.href = 'https://wa.me/5598999012270?text=' + encodeURIComponent(m.wa);
+  waEl.style.display = 'flex';
+  document.getElementById('classif-wa-label').textContent = m.label;
+
+  setTimeout(function(){
+    document.getElementById('classif-resposta').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 100);
 }
 
 // ── TELA 3: AVANÇAR PARA PASSOS ──
@@ -1153,7 +1130,7 @@ function gerarMetodo() {
   // Preenche esboço
   var nome  = document.getElementById('v-nome').value.trim();
   var pn    = nome.split(' ')[0];
-  document.getElementById('nome-s6').textContent = pn + '!';
+  
 
   var stmt = 'Eu ajudo <strong>' + publico + '</strong> que sofrem com <strong>' + dor + '</strong>, para que conquistem <strong>' + res + '</strong>.';
   document.getElementById('metodo-txt-s5').innerHTML = stmt;
@@ -1166,58 +1143,118 @@ function gerarMetodo() {
 
 // ── TELA 7: MONTA LINK WHATSAPP ──
 function montarLinkWhatsApp() {
-  var nome     = document.getElementById('v-nome').value.trim();
-  var publico  = document.getElementById('t-publico').value.trim();
-  var dor      = document.getElementById('t-dor').value.trim();
-  var res      = document.getElementById('t-res').value.trim();
-  var passos   = Array.from(document.querySelectorAll('.passo-input'))
-                   .map(function(i){ return i.value.trim(); })
-                   .filter(function(v){ return v !== ''; });
-  var canais   = Array.from(document.querySelectorAll('.canal.on'))
-                   .map(function(el){ return el.querySelector('.choice-txt').textContent; });
+  var nome      = document.getElementById('v-nome').value.trim();
+  var vSessao   = document.getElementById('v-sessao').value;
+  var vAtend    = document.getElementById('v-atend').value;
+  var vHoras    = document.getElementById('v-horas').value;
+  var publico   = document.getElementById('t-publico').value.trim();
+  var dor       = document.getElementById('t-dor').value.trim();
+  var res       = document.getElementById('t-res').value.trim();
+  var passos    = Array.from(document.querySelectorAll('.passo-input'))
+                    .map(function(i){ return i.value.trim(); })
+                    .filter(function(v){ return v !== ''; });
+
+  // Diagnóstico financeiro
+  var fat    = parseFloat(vSessao) * parseFloat(vAtend);
+  var fatEsc = parseFloat(vAtend) * 2197;
+
+  // Diagnóstico de método
+  var tentou    = document.getElementById('d-tentou') ? document.getElementById('d-tentou').value.trim() : '';
+  var repete    = document.getElementById('d-repete') ? document.getElementById('d-repete').value.trim() : '';
+  var chave     = document.getElementById('d-chave') ? document.getElementById('d-chave').value.trim() : '';
+  var diferente = document.getElementById('d-diferente') ? document.getElementById('d-diferente').value.trim() : '';
+  var ensinar   = document.getElementById('d-ensinar') ? document.getElementById('d-ensinar').value.trim() : '';
+  var normal    = document.getElementById('d-normal') ? document.getElementById('d-normal').value.trim() : '';
+
+  // Classificação
+  var classifEl = document.querySelector('.classif-card.on .choice-txt');
+  var classif   = classifEl ? classifEl.textContent : 'Não informado';
 
   var passosTexto = passos.map(function(p,i){ return '0'+(i+1)+'. '+p; }).join('\n');
-  var canaisTexto = canais.length > 0 ? canais.map(function(c){ return '✦ '+c; }).join('\n') : 'Não informado';
 
-  var msg = 'Olá Jade! Fiz a ferramenta e quero compartilhar meu esboço.\n\n' +
+  var msg =
+    'Olá Jade! Fiz a ferramenta e quero compartilhar meu esboço completo.\n\n' +
     '👤 *' + nome + '*\n\n' +
+    '*DIAGNÓSTICO FINANCEIRO*\n' +
+    '• Valor por sessão: R$ ' + parseFloat(vSessao).toLocaleString('pt-BR') + '\n' +
+    '• Atendimentos/mês: ' + vAtend + '\n' +
+    '• Faturamento atual: R$ ' + fat.toLocaleString('pt-BR') + '\n' +
+    '• Potencial com programa (R$ 2.197): R$ ' + fatEsc.toLocaleString('pt-BR') + '\n\n' +
+    '*DIAGNÓSTICO DE MÉTODO*\n' +
+    '• O que ela já tentou: ' + tentou + '\n' +
+    '• O que repete naturalmente: ' + repete + '\n' +
+    '• Momento da virada: ' + chave + '\n' +
+    '• Diferencial invisível: ' + diferente + '\n' +
+    '• Por onde começa: ' + ensinar + '\n' +
+    '• O que não aceita mais: ' + normal + '\n\n' +
+    '*AUTOAVALIAÇÃO*\n' +
+    classif + '\n\n' +
     '*MÉTODO*\n' +
     '• Para quem: ' + publico + '\n' +
     '• Dor: ' + dor + '\n' +
     '• Transformação: ' + res + '\n\n' +
-    '*PASSOS DO MÉTODO*\n' + passosTexto + '\n\n' +
-    '*PROGRAMA*\n' + canaisTexto;
+    '*PASSOS DO MÉTODO*\n' + passosTexto;
 
   document.getElementById('btn-whatsapp').href = 'https://wa.me/5598999012270?text=' + encodeURIComponent(msg);
 }
 
 // ── TELA 7: BAIXAR ESBOÇO ──
 function baixarPDF() {
-  var nome     = document.getElementById('v-nome').value.trim();
-  var publico  = document.getElementById('t-publico').value.trim();
-  var dor      = document.getElementById('t-dor').value.trim();
-  var res      = document.getElementById('t-res').value.trim();
-  var passos   = Array.from(document.querySelectorAll('.passo-input'))
-                   .map(function(i){ return i.value.trim(); })
-                   .filter(function(v){ return v !== ''; });
-  var canais   = Array.from(document.querySelectorAll('.canal.on'))
-                   .map(function(el){ return el.querySelector('.choice-txt').textContent; });
+  var nome      = document.getElementById('v-nome').value.trim();
+  var vSessao   = document.getElementById('v-sessao').value;
+  var vAtend    = document.getElementById('v-atend').value;
+  var publico   = document.getElementById('t-publico').value.trim();
+  var dor       = document.getElementById('t-dor').value.trim();
+  var res       = document.getElementById('t-res').value.trim();
+  var passos    = Array.from(document.querySelectorAll('.passo-input'))
+                    .map(function(i){ return i.value.trim(); })
+                    .filter(function(v){ return v !== ''; });
+
+  var fat    = parseFloat(vSessao) * parseFloat(vAtend);
+  var fatEsc = parseFloat(vAtend) * 2197;
+
+  var tentou    = document.getElementById('d-tentou') ? document.getElementById('d-tentou').value.trim() : '';
+  var repete    = document.getElementById('d-repete') ? document.getElementById('d-repete').value.trim() : '';
+  var chave     = document.getElementById('d-chave') ? document.getElementById('d-chave').value.trim() : '';
+  var diferente = document.getElementById('d-diferente') ? document.getElementById('d-diferente').value.trim() : '';
+  var ensinar   = document.getElementById('d-ensinar') ? document.getElementById('d-ensinar').value.trim() : '';
+  var normal    = document.getElementById('d-normal') ? document.getElementById('d-normal').value.trim() : '';
+
+  var classifEl = document.querySelector('.classif-card.on .choice-txt');
+  var classif   = classifEl ? classifEl.textContent : 'Não informado';
 
   var passosTexto = passos.map(function(p,i){ return '0'+(i+1)+'. '+p; }).join('\n');
-  var canaisTexto = canais.length > 0 ? canais.map(function(c){ return '✦ '+c; }).join('\n') : 'Não informado';
 
   var conteudo =
-    'ESBOÇO DO MÉTODO E PROGRAMA\n' +
-    '================================\n\n' +
+    'ESBOÇO COMPLETO — FERRAMENTA JADE TORRES\n' +
+    '==========================================\n\n' +
     'Nome: ' + nome + '\n\n' +
-    'MÉTODO\n------\n' +
+    'DIAGNÓSTICO FINANCEIRO\n' +
+    '----------------------\n' +
+    'Valor por sessão: R$ ' + parseFloat(vSessao).toLocaleString('pt-BR') + '\n' +
+    'Atendimentos/mês: ' + vAtend + '\n' +
+    'Faturamento atual: R$ ' + fat.toLocaleString('pt-BR') + '\n' +
+    'Potencial com programa (R$ 2.197): R$ ' + fatEsc.toLocaleString('pt-BR') + '\n\n' +
+    'DIAGNÓSTICO DE MÉTODO\n' +
+    '---------------------\n' +
+    'O que ela já tentou: ' + tentou + '\n' +
+    'O que repete naturalmente: ' + repete + '\n' +
+    'Momento da virada: ' + chave + '\n' +
+    'Diferencial invisível: ' + diferente + '\n' +
+    'Por onde começa: ' + ensinar + '\n' +
+    'O que não aceita mais: ' + normal + '\n\n' +
+    'AUTOAVALIAÇÃO\n' +
+    '-------------\n' +
+    classif + '\n\n' +
+    'MÉTODO\n' +
+    '------\n' +
     'Para quem: ' + publico + '\n' +
     'Dor que resolve: ' + dor + '\n' +
     'Transformação: ' + res + '\n\n' +
-    'Passo a passo:\n' + passosTexto + '\n\n' +
-    'PROGRAMA\n--------\n' +
-    'Canais de entrega:\n' + canaisTexto + '\n\n' +
-    '================================\n' +
+    'PASSOS DO MÉTODO\n' +
+    '----------------\n' +
+    passosTexto + '\n\n' +
+    '==========================================\n' +
     'Gerado pela ferramenta de Jade Torres\n' +
     '12 Semanas no Ar · Caverna das Guerreiras';
 
