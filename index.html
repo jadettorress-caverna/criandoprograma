@@ -682,14 +682,6 @@ input::placeholder, textarea::placeholder { color: #a09060; font-style: italic; 
       <p id="classif-msg">—</p>
     </div>
 
-    <a id="classif-wa" href="#" target="_blank" style="display:none; text-decoration:none; justify-content:center; margin-top:16px;">
-      <button style="background:#25D366;color:#fff;border:none;padding:14px 28px;font-family:'DM Mono',monospace;font-size:.68rem;font-weight:400;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;border-radius:50px;display:inline-flex;align-items:center;gap:10px;box-shadow:0 0 16px rgba(37,211,102,0.35);"
-      onmouseover="this.style.transform='translateY(-1px)'" onmouseout="this.style.transform='translateY(0)'">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.524 5.862L.057 23.857a.5.5 0 0 0 .609.609l6.054-1.459A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.686-.5-5.22-1.373l-.374-.214-3.875.933.95-3.794-.234-.384A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-        <span id="classif-wa-label">Falar com a Jade</span>
-      </button>
-    </a>
-
     <div class="rule"></div>
 
     <button class="btn" onclick="goTo(4)" style="margin-top:8px;">
@@ -738,31 +730,6 @@ input::placeholder, textarea::placeholder { color: #a09060; font-style: italic; 
     <div class="callout">
       <p>Desenvolva o que está em sua mente e envie para a Jade solicitando uma análise. Você não precisa ter tudo perfeito para avançar — o que você escrever já é suficiente para começarmos juntas.</p>
     </div>
-
-      <button style="
-        background: #25D366;
-        color: #fff;
-        border: none;
-        padding: 14px 28px;
-        font-family: 'DM Mono', monospace;
-        font-size: .68rem;
-        font-weight: 400;
-        letter-spacing: .14em;
-        text-transform: uppercase;
-        cursor: pointer;
-        border-radius: 50px;
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        box-shadow: 0 0 16px rgba(37,211,102,0.35);
-        transition: box-shadow .2s, transform .15s;
-      "
-      onmouseover="this.style.transform='translateY(-1px)'"
-      onmouseout="this.style.transform='translateY(0)'">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.524 5.862L.057 23.857a.5.5 0 0 0 .609.609l6.054-1.459A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.686-.5-5.22-1.373l-.374-.214-3.875.933.95-3.794-.234-.384A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-        Quero ajuda para desenhar meu método
-      </button>
-    </a>
   </div>
   <div class="footer-note">Ferramenta gratuita · Jade Torres · 12 Semanas no Ar</div>
 </section>
@@ -904,22 +871,21 @@ function goTo(n) {
   if (n === 6) { montarLinkWhatsApp(); }
 }
 
+function stepNum() {
+  var map = {1:1, 2:2, 3:3, '3b':3, 4:4, 5:5, 6:6};
+  return map[cur] || cur;
+}
+
 function updateBar() {
-  var step = cur === '3b' ? 3 : cur;
+  var step = stepNum();
   document.getElementById('progress').style.width = (step / 7 * 100) + '%';
-  if (cur === '3b') {
-    document.getElementById('step-label').textContent = '03 / 07';
-  } else {
-    document.getElementById('step-label').textContent = pad(cur) + ' / ' + pad(7);
-  }
+  document.getElementById('step-label').textContent = pad(step) + ' / ' + pad(7);
   atualizarBotaoVoltar();
 }
 
 function pad(n) { return n < 10 ? '0' + n : n; }
 
 function voltar() {
-  if (cur <= 1) return;
-  // Map current screen to previous
   var prev = {2:1, 3:2, '3b':3, 4:'3b', 5:4, 6:5};
   if (prev[cur] !== undefined) goTo(prev[cur]);
 }
@@ -927,8 +893,7 @@ function voltar() {
 function atualizarBotaoVoltar() {
   var btn = document.getElementById('btn-back');
   if (!btn) return;
-  // Show on screens 2-7, hide on 1
-  btn.style.display = (cur >= 2 || cur === '3b') ? 'block' : 'none';
+  btn.style.display = (stepNum() >= 2) ? 'block' : 'none';
 }
 
 // ── TELA 1 ──
@@ -1064,10 +1029,6 @@ function escolherClassificacao(el, nivel) {
   document.getElementById('classif-msg').textContent = m.texto;
   document.getElementById('classif-resposta').style.display = 'block';
 
-  var waEl = document.getElementById('classif-wa');
-  waEl.href = 'https://wa.me/5598999012270?text=' + encodeURIComponent(m.wa);
-  waEl.style.display = 'flex';
-  document.getElementById('classif-wa-label').textContent = m.label;
 
   setTimeout(function(){
     document.getElementById('classif-resposta').scrollIntoView({ behavior: 'smooth', block: 'start' });
