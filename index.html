@@ -416,6 +416,43 @@ input::placeholder, textarea::placeholder { color: #a09060; font-style: italic; 
 }
 .btn-back:hover { border-color: var(--gold-dim); color: var(--text); }
 
+
+/* ── CHECK ROW SIM/NÃO ── */
+.check-row {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 18px 20px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.check-row-text {
+  font-size: .88rem;
+  line-height: 1.55;
+  color: var(--text);
+}
+.check-row-btns {
+  display: flex;
+  gap: 10px;
+}
+.check-btn {
+  flex: 1;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-family: 'DM Mono', monospace;
+  font-size: .68rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 10px 0;
+  cursor: pointer;
+  transition: all .15s;
+}
+.check-btn:hover { border-color: var(--gold-dim); color: var(--text); }
+.check-btn.sim-on { background: var(--gold); border-color: var(--gold); color: var(--bg); }
+.check-btn.nao-on { background: var(--surface2); border-color: var(--red); color: var(--red); }
+
 /* ── DUAS PÁGINAS ── */
 #pagina-capa,
 #pagina-ferramenta {
@@ -508,81 +545,45 @@ input::placeholder, textarea::placeholder { color: #a09060; font-style: italic; 
   <div class="inner">
     <div class="kicker">Jade Torres · Caverna das Guerreiras</div>
 
-    <h1>Antes de desenhar seu programa de mentoria, vamos analisar o cenário atual do seu negócio.<br><em>Veja o quanto você está deixando de faturar!</em></h1>
-
-    <p>Preencha com seus dados abaixo e clique no botão diagnóstico para visualizar.</p>
+    <h1>"Sua mensagem merece existir além da sua agenda lotada."<br><em>Agora vamos transformar o que você sabe em um programa que trabalha por você.</em></h1>
 
     <div class="rule"></div>
 
     <div class="field" id="f0">
-      <label>Por favor digite seu nome antes dos números</label>
+      <label>Qual é o seu nome?</label>
       <input type="text" id="v-nome" placeholder="Ex: Ana Paula">
       <div class="err">Conta seu nome para continuar.</div>
     </div>
 
-    <div class="field" id="f1">
-      <label>Quanto você cobra por sessão ou atendimento? (R$)</label>
-      <input type="number" id="v-sessao" placeholder="180" min="1">
-      <div class="err">Preenche esse campo para continuar.</div>
+    <div class="field" id="f-metodo-nome">
+      <label>Qual é o nome do seu movimento, método ou mentoria?</label>
+      <input type="text" id="v-metodo-nome" placeholder="Ex: Método Reset, Mentoria Florescer, Academia das Guerreiras…">
     </div>
 
-    <div class="field" id="f2">
-      <label>Quantos atendimentos você faz por mês?</label>
-      <input type="number" id="v-atend" placeholder="20" min="1">
-      <div class="err">Preenche esse campo para continuar.</div>
-    </div>
-
-    <div class="field" id="f3">
-      <label>Quantas horas dura um atendimento?</label>
-      <input type="number" id="v-horas" placeholder="1" min="1">
-      <div class="err">Preenche esse campo para continuar.</div>
-    </div>
-
-    <button class="btn" id="btn-calcular" onclick="abrirDiagnostico(event)">
-        Ver meu diagnóstico <span class="arr">→</span>
-      </button>
-  </div>
-  <div class="footer-note">Ferramenta gratuita · Jade Torres · 12 Semanas no Ar</div>
-</section>
-
-
-<!-- ══════════════════════════════════════
-     TELA 2 — RESULTADO DO DIAGNÓSTICO
-══════════════════════════════════════ -->
-<section class="screen" id="s2">
-  <div class="inner">
-    <div class="kicker">Passo 2 de 5 · seu diagnóstico</div>
-
-    <h1>Olá, <em id="diag-nome">—</em></h1>
-    <p style="margin-bottom:0;">Aqui está o retrato real do seu negócio hoje e o que muda com um programa de mentoria estruturado.</p>
-
-    <div class="rule"></div>
-
-    <div class="compare">
-      <div class="col">
-        <div class="col-head bad">Cenário atual</div>
-        <div class="big-num" id="r-fat">R$ 0</div>
-        <div class="num-label">faturamento mensal</div>
-        <div class="row"><span class="row-l">Clientes</span><span class="row-v" id="r-hm">—</span></div>
-        <div class="row"><span class="row-l">Valor Sessão</span><span class="row-v" id="r-ha">—</span></div>
-        <div class="row"><span class="row-l">Valor Hora</span><span class="row-v" id="r-vh">—</span></div>
-      </div>
-      <div class="col lit">
-        <div class="col-head good">Cenário escalável</div>
-        <div class="big-num" id="r-fat-esc" style="color:var(--gold);">R$ 0</div>
-        <div class="num-label">com programa de mentoria</div>
-        <div class="row"><span class="row-l">Clientes</span><span class="row-v" id="r-alunos">—</span></div>
-        <div class="row"><span class="row-l">Ticket por aluno</span><span class="row-v">R$ 2.197</span></div>
-        <div class="row"><span class="row-l">Entrega</span><span class="row-v">Sua orientação entregue em vários canais e formatos, sem depender da sua hora.</span></div>
+    <div class="field" id="f-perfil">
+      <label>Qual foi o resultado do seu QUIZ?</label>
+      <div class="choices" style="margin-top:8px;">
+        <div class="choice" onclick="escolherPerfil(this)" data-perfil="A Sobrecarregada Competente">
+          <div class="dot"></div>
+          <span class="choice-txt">A Sobrecarregada Competente</span>
+        </div>
+        <div class="choice" onclick="escolherPerfil(this)" data-perfil="A Especialista Invisível">
+          <div class="dot"></div>
+          <span class="choice-txt">A Especialista Invisível</span>
+        </div>
+        <div class="choice" onclick="escolherPerfil(this)" data-perfil="A Empreendedora Dispersa">
+          <div class="dot"></div>
+          <span class="choice-txt">A Empreendedora Dispersa</span>
+        </div>
+        <div class="choice" onclick="escolherPerfil(this)" data-perfil="Não fiz o quiz ainda">
+          <div class="dot"></div>
+          <span class="choice-txt">Não fiz o quiz ainda</span>
+        </div>
       </div>
     </div>
 
-    <div class="callout" id="r-frase">
-      <p>—</p>
-    </div>
-
-    <button class="btn" onclick="goTo(3)">
-      Entendi Jade. Quero desenhar meu programa agora <span class="arr">→</span>
+    <button class="btn" id="btn-iniciar" onclick="iniciarFerramenta()">
+      Iniciar o resumo do meu programa de mentoria <span class="arr">→</span>
     </button>
   </div>
   <div class="footer-note">Ferramenta gratuita · Jade Torres · 12 Semanas no Ar</div>
@@ -590,16 +591,66 @@ input::placeholder, textarea::placeholder { color: #a09060; font-style: italic; 
 
 
 
+
+
+
+
+
+
+
+
+<!-- ══════════════════════════════════════
+     TELA 2 — QUEM, DOR E TRANSFORMAÇÃO
+══════════════════════════════════════ -->
+<section class="screen" id="s2">
+  <div class="inner">
+    <div class="ornament">passo 2 de 5 · seu método</div>
+
+    <h2>Antes de montar um programa de mentoria, é importante ter um método replicável.<br><em>Se você ainda não estruturou o seu, que tal pensar nisso agora?</em></h2>
+
+    <p style="font-size:.82rem; color:var(--muted);">Comece respondendo essas três perguntas abaixo. Se travar em alguma, não se preocupe, basta informar que ainda não tem a resposta.</p>
+
+    <div class="field" id="fm1">
+      <label>Para quem é o seu método?</label>
+      <input type="text" id="t-publico" placeholder="Ex: Nutricionistas que querem sair do atendimento 1x1…">
+      <div class="err">Descreve para quem é o seu método.</div>
+    </div>
+
+    <div class="field" id="fm2">
+      <label>Qual é a dor principal que o seu método resolve?</label>
+      <input type="text" id="t-dor" placeholder="Ex: Elas têm muito conhecimento mas não sabem organizar em formato de programa…">
+      <div class="err">Descreve a dor que você resolve.</div>
+    </div>
+
+    <div class="field" id="fm3">
+      <label>Qual é a transformação que a pessoa conquista com o seu método?</label>
+      <input type="text" id="t-res" placeholder="Ex: Ela sai com o método estruturado, nomeado e pronto para ser ensinado e vendido…">
+      <div class="err">Descreve a transformação que você entrega.</div>
+    </div>
+
+    <button class="btn" onclick="avancarParaDiagnostico()" style="margin-top: 8px;">
+      Continuar para o diagnóstico <span class="arr">→</span>
+    </button>
+
+    <div class="rule" style="margin-top: 36px;"></div>
+
+    <div class="callout">
+      <p>Desenvolva o que está em sua mente e envie para a Jade solicitando uma análise. Você não precisa ter tudo perfeito para avançar — o que você escrever já é suficiente para começarmos juntas.</p>
+    </div>
+  </div>
+  <div class="footer-note">Ferramenta gratuita · Jade Torres · 12 Semanas no Ar</div>
+</section>
+
 <!-- ══════════════════════════════════════
      TELA 3 — DIAGNÓSTICO DE MÉTODO
 ══════════════════════════════════════ -->
 <section class="screen" id="s3">
   <div class="inner">
-    <div class="ornament">passo 3 de 7 · diagnóstico de método</div>
+    <div class="ornament">passo 3 de 5 · diagnóstico de método</div>
 
-    <h2>Você provavelmente já tem mais método do que imagina.<br><em>Vamos descobrir o que já existe aí.</em></h2>
+    <h2>Você provavelmente já tem um método validado.<br><em>Vamos confirmar o que já existe aí.</em></h2>
 
-    <p>O problema quase nunca é falta de conhecimento. É falta de nome, ordem e confiança. Responde sem tentar acertar.</p>
+    <p>Responda tomando uma bebida predileta.</p>
 
     <div class="field" id="fd1">
       <label>Quando alguém te procura, o que normalmente ela já tentou antes?</label>
@@ -632,7 +683,7 @@ input::placeholder, textarea::placeholder { color: #a09060; font-style: italic; 
     </div>
 
     <div class="field" id="fd6">
-      <label>O que você nunca mais acredita que sua cliente deveria aceitar como normal?</label>
+      <label>O que você mais acredita que sua cliente nunca deveria aceitar como normal?</label>
       <textarea id="d-normal" placeholder="Ex: Trabalhar muito e ganhar pouco por falta de posicionamento…" style="min-height:72px;"></textarea>
       <div class="err">Descreve essa crença.</div>
     </div>
@@ -645,17 +696,16 @@ input::placeholder, textarea::placeholder { color: #a09060; font-style: italic; 
   <div class="footer-note">Ferramenta gratuita · Jade Torres · 12 Semanas no Ar</div>
 </section>
 
-
 <!-- ══════════════════════════════════════
      TELA 3B — ESPELHO DO MÉTODO
 ══════════════════════════════════════ -->
 <section class="screen" id="s3b">
   <div class="inner">
-    <div class="ornament">passo 3 de 7 · seu espelho</div>
+    <div class="ornament">passo 3 de 5 · seu espelho</div>
 
-    <h1>Você não está começando do zero.<br><em>Seu método já existe.</em></h1>
+    <h1>Se você conseguiu responder tudo.<br><em>Seu método já existe.</em></h1>
 
-    <p>Agora me diga, como foi responder essas perguntas?</p>
+    <p>Mas antes de continuarmos, por favor me responda;</p>
 
 <p id="espelho-frase" style="display:none"></p>
 
@@ -691,84 +741,117 @@ input::placeholder, textarea::placeholder { color: #a09060; font-style: italic; 
   <div class="footer-note">Ferramenta gratuita · Jade Torres · 12 Semanas no Ar</div>
 </section>
 
-
 <!-- ══════════════════════════════════════
-     TELA 4 — QUEM, DOR E TRANSFORMAÇÃO
+     TELA 4 — CHECKLIST DO PROGRAMA
 ══════════════════════════════════════ -->
 <section class="screen" id="s4">
   <div class="inner">
-    <div class="ornament">passo 3 de 7 · seu método</div>
+    <div class="ornament">passo 4 de 5 · checklist do programa</div>
 
-    <h2>Antes de montar um programa de mentoria, é importante ter um método.<br><em>Se você ainda não desenhou o seu, faça isso agora. E se já tem o seu, apenas informe.</em></h2>
+    <h2><span id="nome-s4-check">—</span>, agora quero que você marque<br><em>o que você já tem pronto.</em></h2>
 
-    <p style="font-size:.82rem; color:var(--muted);">Responde as três perguntas abaixo. Se travar em alguma, não se preocupe — tem um convite especial esperando por você no final desta página.</p>
+    <p style="font-size:.82rem; color:var(--muted); margin-bottom:24px;">Assim posso te entregar um checklist do que você falta construir para ter um programa de mentoria que trabalhe por você.</p>
 
-    <div class="field" id="fm1">
-      <label>Para quem é o seu método?</label>
-      <input type="text" id="t-publico" placeholder="Ex: Nutricionistas que querem sair do atendimento 1x1…">
-      <div class="err">Descreve para quem é o seu método.</div>
-    </div>
-
-    <div class="field" id="fm2">
-      <label>Qual é a dor principal que o seu método resolve?</label>
-      <input type="text" id="t-dor" placeholder="Ex: Elas têm muito conhecimento mas não sabem organizar em formato de programa…">
-      <div class="err">Descreve a dor que você resolve.</div>
-    </div>
-
-    <div class="field" id="fm3">
-      <label>Qual é a transformação que a pessoa conquista com o seu método?</label>
-      <input type="text" id="t-res" placeholder="Ex: Ela sai com o método estruturado, nomeado e pronto para ser ensinado e vendido…">
-      <div class="err">Descreve a transformação que você entrega.</div>
-    </div>
-
-    <button class="btn" onclick="avancarParaPassos()" style="margin-top: 8px;">
-      Continuar para os passos <span class="arr">→</span>
-    </button>
-
-    <div class="rule" style="margin-top: 36px;"></div>
-
-    <div class="callout">
-      <p>Desenvolva o que está em sua mente e envie para a Jade solicitando uma análise. Você não precisa ter tudo perfeito para avançar — o que você escrever já é suficiente para começarmos juntas.</p>
-    </div>
-  </div>
-  <div class="footer-note">Ferramenta gratuita · Jade Torres · 12 Semanas no Ar</div>
-</section>
-
-
-<!-- ══════════════════════════════════════
-     TELA 4 — PASSOS DO MÉTODO
-══════════════════════════════════════ -->
-<section class="screen" id="s5">
-  <div class="inner">
-    <div class="ornament">passo 5 de 7 · passos do método</div>
-
-    <h2>Agora descreva o passo a passo do seu método.</h2>
-
-    <p style="font-size:.82rem; color:var(--muted); margin-bottom:20px;">Preencha quantos passos fizerem sentido. Mínimo 3, máximo 8.</p>
-
-    <div id="passos-container">
-      <div class="field passo-field">
-        <label>Passo 01</label>
-        <input type="text" class="passo-input" placeholder="Ex: Descobrir o público e a dor central do método">
+<div id="checklist-grid" style="margin-bottom: 28px;">
+      <div class="check-row" id="check-0">
+        <p class="check-row-text">Tenho meu lugar de fala definido e me posiciono claramente nas redes sociais, gerando desejo pelo que eu entrego na minha mentoria</p>
+        <div class="check-row-btns">
+          <button type="button" class="check-btn" onclick="marcarItem(0, true, this)">Sim</button>
+          <button type="button" class="check-btn" onclick="marcarItem(0, false, this)">Não</button>
+        </div>
       </div>
-      <div class="field passo-field">
-        <label>Passo 02</label>
-        <input type="text" class="passo-input" placeholder="Ex: Estruturar o método em etapas com começo, meio e fim">
+      <div class="check-row" id="check-1">
+        <p class="check-row-text">Tenho um método autoral padronizado passo a passo que a minha mentorada pode seguir e dividir comigo a responsabilidade pelo resultado</p>
+        <div class="check-row-btns">
+          <button type="button" class="check-btn" onclick="marcarItem(1, true, this)">Sim</button>
+          <button type="button" class="check-btn" onclick="marcarItem(1, false, this)">Não</button>
+        </div>
       </div>
-      <div class="field passo-field">
-        <label>Passo 03</label>
-        <input type="text" class="passo-input" placeholder="Ex: Nomear o método e criar a promessa de transformação">
+      <div class="check-row" id="check-2">
+        <p class="check-row-text">Esse método está com toda orientação gravada, hospedada e com suas ferramentas prontas para uso</p>
+        <div class="check-row-btns">
+          <button type="button" class="check-btn" onclick="marcarItem(2, true, this)">Sim</button>
+          <button type="button" class="check-btn" onclick="marcarItem(2, false, this)">Não</button>
+        </div>
+      </div>
+      <div class="check-row" id="check-3">
+        <p class="check-row-text">Tenho minha proposta organizada em slides com a explicação do meu método e os entregáveis da mentoria</p>
+        <div class="check-row-btns">
+          <button type="button" class="check-btn" onclick="marcarItem(3, true, this)">Sim</button>
+          <button type="button" class="check-btn" onclick="marcarItem(3, false, this)">Não</button>
+        </div>
+      </div>
+      <div class="check-row" id="check-4">
+        <p class="check-row-text">Tenho um funil de vendas da minha mentoria no tráfego</p>
+        <div class="check-row-btns">
+          <button type="button" class="check-btn" onclick="marcarItem(4, true, this)">Sim</button>
+          <button type="button" class="check-btn" onclick="marcarItem(4, false, this)">Não</button>
+        </div>
+      </div>
+      <div class="check-row" id="check-5">
+        <p class="check-row-text">Tenho um sistema de recepção para minha mentorada organizado e que não depende do primeiro encontro</p>
+        <div class="check-row-btns">
+          <button type="button" class="check-btn" onclick="marcarItem(5, true, this)">Sim</button>
+          <button type="button" class="check-btn" onclick="marcarItem(5, false, this)">Não</button>
+        </div>
+      </div>
+      <div class="check-row" id="check-6">
+        <p class="check-row-text">Tenho uma rotina mensal de encontros com minhas mentoradas</p>
+        <div class="check-row-btns">
+          <button type="button" class="check-btn" onclick="marcarItem(6, true, this)">Sim</button>
+          <button type="button" class="check-btn" onclick="marcarItem(6, false, this)">Não</button>
+        </div>
+      </div>
+      <div class="check-row" id="check-7">
+        <p class="check-row-text">Tenho uma rotina mensal de estudos, testes e análises de crescimento do meu projeto no digital</p>
+        <div class="check-row-btns">
+          <button type="button" class="check-btn" onclick="marcarItem(7, true, this)">Sim</button>
+          <button type="button" class="check-btn" onclick="marcarItem(7, false, this)">Não</button>
+        </div>
+      </div>
+      <div class="check-row" id="check-8">
+        <p class="check-row-text">Tenho um processo de vendas da minha mentoria no 1 a 1 validado</p>
+        <div class="check-row-btns">
+          <button type="button" class="check-btn" onclick="marcarItem(8, true, this)">Sim</button>
+          <button type="button" class="check-btn" onclick="marcarItem(8, false, this)">Não</button>
+        </div>
+      </div>
+      <div class="check-row" id="check-9">
+        <p class="check-row-text">Tenho um Instagram pronto para receber pessoas que explica quem sou eu, o que eu faço, pra quem eu faço e como eu faço em todos os pontos de conteúdo</p>
+        <div class="check-row-btns">
+          <button type="button" class="check-btn" onclick="marcarItem(9, true, this)">Sim</button>
+          <button type="button" class="check-btn" onclick="marcarItem(9, false, this)">Não</button>
+        </div>
       </div>
     </div>
 
-    <button class="btn-ghost" id="btn-add-passo" onclick="adicionarPasso()" style="margin-top:0; margin-bottom:8px;">
-      + Adicionar passo
-    </button>
+    <div class="rule"></div>
 
-    <br>
+    <p style="font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-bottom:14px;">Uma última pergunta</p>
+    <h2 style="font-size:1.3rem; margin-bottom:20px;">Qual é o seu maior desafio hoje para ter um programa de mentoria trabalhando por você?</h2>
 
-    <button class="btn" id="btn-gerar-metodo" onclick="gerarMetodo()" style="margin-top:12px;">
-      Ver o esboço do meu método <span class="arr">→</span>
+    <div class="choices" id="desafio-grid" style="margin-bottom: 16px;">
+      <div class="choice desafio-item" onclick="escolherDesafio(this, 'Ter tempo para fazer')">
+        <div class="dot"></div>
+        <span class="choice-txt">Ter tempo para fazer</span>
+      </div>
+      <div class="choice desafio-item" onclick="escolherDesafio(this, 'Ter clareza de como fazer')">
+        <div class="dot"></div>
+        <span class="choice-txt">Ter clareza de como fazer</span>
+      </div>
+      <div class="choice desafio-item" onclick="mostrarOutroDesafio(this)">
+        <div class="dot"></div>
+        <span class="choice-txt">Outro motivo</span>
+      </div>
+    </div>
+
+    <div class="field" id="f-outro-desafio" style="display:none;">
+      <label>Conta qual é o seu motivo</label>
+      <input type="text" id="v-outro-desafio" placeholder="Descreve em poucas palavras...">
+    </div>
+
+    <button class="btn" id="btn-ver-checklist" onclick="gerarChecklist()" style="margin-top:16px;">
+      Ver meu resultado <span class="arr">→</span>
     </button>
 
   </div>
@@ -779,9 +862,9 @@ input::placeholder, textarea::placeholder { color: #a09060; font-style: italic; 
 <!-- ══════════════════════════════════════
      TELA 6 — ESBOÇO + CTA FINAL
 ══════════════════════════════════════ -->
-<section class="screen" id="s6">
+<section class="screen" id="s5">
   <div class="inner">
-    <div class="ornament">passo 6 de 7 · seu método e próximos passos</div>
+    <div class="ornament">passo 5 de 5 · seu método e próximos passos</div>
 
     <h1 id="h1-s7">Você tem um método.<br><em>Agora você precisa de estrutura para tirar isso do papel.</em></h1>
 
@@ -792,6 +875,21 @@ input::placeholder, textarea::placeholder { color: #a09060; font-style: italic; 
     </div>
 
     <div id="passos-esboço" style="margin: 0 0 28px;"></div>
+
+    <!-- Resultado do checklist -->
+    <div class="method-box" id="checklist-resultado-box" style="margin: 0 0 24px;">
+      <div class="method-label">O que você já tem pronto</div>
+      <div class="method-txt" id="checklist-prontos">—</div>
+    </div>
+
+    <div class="method-box" id="checklist-faltam-box" style="margin: 0 0 28px; border-color: var(--gold-dim);">
+      <div class="method-label" style="color:var(--gold);">O que ainda falta providenciar</div>
+      <div class="method-txt" id="checklist-faltam">—</div>
+    </div>
+
+    <div class="callout" id="desafio-resultado-box" style="margin-bottom: 28px;">
+      <p id="desafio-resultado-txt">—</p>
+    </div>
 
     <div class="rule"></div>
 
@@ -810,7 +908,7 @@ input::placeholder, textarea::placeholder { color: #a09060; font-style: italic; 
     </div>
 
     <div class="callout">
-      <p>Você fez o diagnóstico. Desenhou o método. Faço questão de olhar o seu esboço e te dar um retorno pessoalmente. É só baixar e me enviar pelo WhatsApp.</p>
+      <p>Você fez o diagnóstico. Desenhou seu checklist e eu faço questão de olhar o seu esboço e te dar um retorno. É só me enviar pelo WhatsApp no botão abaixo.</p>
     </div>
 
     <!-- Botão WhatsApp -->
@@ -868,25 +966,31 @@ function goTo(n) {
   updateBar();
   window.scrollTo({ top: 0, behavior: 'smooth' });
   // Monta link WhatsApp ao chegar na tela 7
-  if (n === 6) { montarLinkWhatsApp(); }
+  if (n === 5) { montarLinkWhatsApp(); }
+  if (n === 4) {
+    var nomeCheck = document.getElementById('v-nome').value.trim();
+    var pnCheck = nomeCheck ? nomeCheck.split(' ')[0] : '';
+    var elCheck = document.getElementById('nome-s4-check');
+    if (elCheck && pnCheck) elCheck.textContent = pnCheck;
+  }
 }
 
 function stepNum() {
-  var map = {1:1, 2:2, 3:3, '3b':3, 4:4, 5:5, 6:6};
+  var map = {1:1, 2:2, 3:3, '3b':3, 4:4, 5:5};
   return map[cur] || cur;
 }
 
 function updateBar() {
   var step = stepNum();
-  document.getElementById('progress').style.width = (step / 7 * 100) + '%';
-  document.getElementById('step-label').textContent = pad(step) + ' / ' + pad(7);
+  document.getElementById('progress').style.width = (step / 5 * 100) + '%';
+  document.getElementById('step-label').textContent = pad(step) + ' / ' + pad(5);
   atualizarBotaoVoltar();
 }
 
 function pad(n) { return n < 10 ? '0' + n : n; }
 
 function voltar() {
-  var prev = {2:1, 3:2, '3b':3, 4:'3b', 5:4, 6:5};
+  var prev = {2:1, 3:2, '3b':3, 4:'3b', 5:4};
   if (prev[cur] !== undefined) goTo(prev[cur]);
 }
 
@@ -896,56 +1000,27 @@ function atualizarBotaoVoltar() {
   btn.style.display = (stepNum() >= 2) ? 'block' : 'none';
 }
 
-// ── TELA 1 ──
-function abrirDiagnostico(event) {
+
+
+
+
+
+
+// ── TELA 1: INICIAR FERRAMENTA ──
+function iniciarFerramenta() {
   var nome = document.getElementById('v-nome').value.trim();
-  var v = parseFloat(document.getElementById('v-sessao').value);
-  var a = parseFloat(document.getElementById('v-atend').value);
-  var h = parseFloat(document.getElementById('v-horas').value);
-  var ok = true;
-
-  ['f0','f1','f2','f3'].forEach(function(id) {
-    document.getElementById(id).classList.remove('bad');
-  });
-
-  if (!nome) { document.getElementById('f0').classList.add('bad'); ok = false; }
-  if (!v || v <= 0) { document.getElementById('f1').classList.add('bad'); ok = false; }
-  if (!a || a <= 0) { document.getElementById('f2').classList.add('bad'); ok = false; }
-  if (!h || h <= 0) { document.getElementById('f3').classList.add('bad'); ok = false; }
-  if (!ok) return;
-
-  // Calcula
-  var pn     = nome.split(' ')[0];
-  var fat    = v * a;
-  var hm     = Math.round(h * a);
-  var vh     = hm > 0 ? (fat / hm).toFixed(2) : '0';
-  var fatEsc = a * 2197;
-  var frase;
-  if (v < 200) {
-    frase = pn + ', com o mesmo número de pessoas que você atende hoje, um programa de mentoria a R$ 2.197 te geraria R$ ' + fatEsc.toLocaleString('pt-BR') + ' por mês, trabalhando menos horas. E claro... você pode iniciar com menos pessoas e mesmo assim ainda vai faturar mais e ter mais liberdade.';
-  } else if (v < 600) {
-    frase = pn + ', você atende ' + a + ' pessoas e fatura R$ ' + fat.toLocaleString('pt-BR') + '. Essas mesmas ' + a + ' pessoas num programa de R$ 2.197 gerariam R$ ' + fatEsc.toLocaleString('pt-BR') + '. E você pode começar com menos pessoas do que atende hoje e mesmo assim faturar mais com muito mais liberdade.';
-  } else {
-    frase = pn + ', com ' + a + ' pessoas num programa de R$ 2.197 você geraria R$ ' + fatEsc.toLocaleString('pt-BR') + ' por mês. E você pode começar com menos pessoas do que atende hoje e mesmo assim faturar mais com muito mais liberdade.';
-  }
-
-  // Navega para tela 2 (resultado)
+  document.getElementById('f0').classList.remove('bad');
+  if (!nome) { document.getElementById('f0').classList.add('bad'); return; }
   goTo(2);
-
-  // Preenche após navegação
-  document.getElementById('diag-nome').textContent = pn + '.';
-  document.getElementById('r-fat').textContent     = 'R$ ' + fat.toLocaleString('pt-BR');
-  document.getElementById('r-hm').textContent      = a + ' clientes';
-  document.getElementById('r-ha').textContent      = 'R$ ' + v.toLocaleString('pt-BR');
-  document.getElementById('r-vh').textContent      = 'R$ ' + parseFloat(vh).toLocaleString('pt-BR', { minimumFractionDigits: 2 });
-  document.getElementById('r-fat-esc').textContent = 'R$ ' + fatEsc.toLocaleString('pt-BR');
-  document.getElementById('r-alunos').textContent  = a + ' clientes';
-  document.getElementById('r-frase').querySelector('p').textContent = frase;
 }
 
-
-
-
+// ── TELA 1: PERFIL DO QUIZ ──
+var perfilQuiz = '';
+function escolherPerfil(el) {
+  document.querySelectorAll('[data-perfil]').forEach(function(c){ c.classList.remove('on'); });
+  el.classList.add('on');
+  perfilQuiz = el.getAttribute('data-perfil');
+}
 
 // ── TELA 3: DIAGNÓSTICO DE MÉTODO ──
 function gerarDiagnosticoMetodo() {
@@ -992,7 +1067,6 @@ function gerarDiagnosticoMetodo() {
     '</strong>. Você já conduz pessoas por um caminho com começo, meio e fim. Agora vamos transformar isso num método ensinável.';
 
   goTo('3b');
-  document.getElementById('espelho-txt').innerHTML = espelhoHTML;
   var labelEl = document.getElementById('classif-nome-label');
   if (labelEl) labelEl.textContent = pn + ', como você classifica seu preenchimento?';
   document.getElementById('espelho-frase').innerHTML = frase;
@@ -1036,6 +1110,20 @@ function escolherClassificacao(el, nivel) {
 }
 
 // ── TELA 3: AVANÇAR PARA PASSOS ──
+function avancarParaDiagnostico() {
+  var publico = document.getElementById('t-publico').value.trim();
+  var dor     = document.getElementById('t-dor').value.trim();
+  var res     = document.getElementById('t-res').value.trim();
+
+  ['fm1','fm2','fm3'].forEach(function(id){ document.getElementById(id).classList.remove('bad'); });
+
+  if (!publico) { document.getElementById('fm1').classList.add('bad'); return; }
+  if (!dor)     { document.getElementById('fm2').classList.add('bad'); return; }
+  if (!res)     { document.getElementById('fm3').classList.add('bad'); return; }
+
+  goTo(3);
+}
+
 function avancarParaPassos() {
   var publico = document.getElementById('t-publico').value.trim();
   var dor     = document.getElementById('t-dor').value.trim();
@@ -1047,78 +1135,109 @@ function avancarParaPassos() {
   if (!dor)     { document.getElementById('fm2').classList.add('bad'); return; }
   if (!res)     { document.getElementById('fm3').classList.add('bad'); return; }
 
-  goTo(5);
+  goTo(4);
 }
 
-// ── TELA 4: ADICIONAR PASSO ──
-var numPassos = 3;
-function adicionarPasso() {
-  if (numPassos >= 8) {
-    document.getElementById('btn-add-passo').textContent = 'Máximo de 8 passos atingido';
-    document.getElementById('btn-add-passo').disabled = true;
-    return;
+// ── TELA 4: CHECKLIST SIM/NÃO ──
+var itensChecklist = [
+  { pronto: "Tenho meu lugar de fala definido e me posiciono claramente nas redes sociais, gerando desejo pelo que eu entrego na minha mentoria", falta: "Definir meu lugar de fala e me posicionar claramente nas redes sociais" },
+  { pronto: "Tenho um método autoral padronizado passo a passo", falta: "Construir um método autoral padronizado passo a passo" },
+  { pronto: "Esse método está com toda orientação gravada, hospedada e com suas ferramentas prontas para uso", falta: "Gravar e hospedar o método com as ferramentas prontas para uso" },
+  { pronto: "Tenho minha proposta organizada em slides com a explicação do meu método e os entregáveis da mentoria", falta: "Organizar minha proposta em slides com o método e os entregáveis da mentoria" },
+  { pronto: "Tenho um funil de vendas da minha mentoria no tráfego", falta: "Construir um funil de vendas da minha mentoria no tráfego" },
+  { pronto: "Tenho um sistema de recepção para minha mentorada organizado e que não depende do primeiro encontro", falta: "Organizar um sistema de recepção que não dependa do primeiro encontro" },
+  { pronto: "Tenho uma rotina mensal de encontros com minhas mentoradas", falta: "Criar uma rotina mensal de encontros com minhas mentoradas" },
+  { pronto: "Tenho uma rotina mensal de estudos, testes e análises de crescimento do meu projeto no digital", falta: "Criar uma rotina mensal de estudos, testes e análises de crescimento" },
+  { pronto: "Tenho um processo de vendas da minha mentoria no 1 a 1 validado", falta: "Validar um processo de vendas da minha mentoria no 1 a 1" },
+  { pronto: "Tenho um Instagram pronto para receber pessoas que explica quem sou eu, o que eu faço, pra quem eu faço e como eu faço em todos os pontos de conteúdo", falta: "Estruturar meu Instagram para explicar quem sou, o que faço, pra quem faço e como faço" }
+];
+var respostasChecklist = {};
+
+function marcarItem(idx, valor, btnEl) {
+  respostasChecklist[idx] = valor;
+  var row = document.getElementById('check-' + idx);
+  var btns = row.querySelectorAll('.check-btn');
+  btns.forEach(function(b) { b.classList.remove('sim-on','nao-on'); });
+  if (valor) {
+    btnEl.classList.add('sim-on');
+  } else {
+    btnEl.classList.add('nao-on');
   }
-  numPassos++;
-  var container = document.getElementById('passos-container');
-  var div = document.createElement('div');
-  div.className = 'field passo-field';
-  div.innerHTML = '<label>Passo 0' + numPassos + '</label><input type="text" class="passo-input" placeholder="Descreve este passo...">';
-  container.appendChild(div);
 }
 
-// ── TELA 4: GERAR MÉTODO ──
-function gerarMetodo() {
+var desafioEscolhido = '';
+function escolherDesafio(el, texto) {
+  document.querySelectorAll('.desafio-item').forEach(function(c){ c.classList.remove('on'); });
+  el.classList.add('on');
+  desafioEscolhido = texto;
+  document.getElementById('f-outro-desafio').style.display = 'none';
+}
+
+function mostrarOutroDesafio(el) {
+  document.querySelectorAll('.desafio-item').forEach(function(c){ c.classList.remove('on'); });
+  el.classList.add('on');
+  desafioEscolhido = '';
+  document.getElementById('f-outro-desafio').style.display = 'block';
+  document.getElementById('v-outro-desafio').focus();
+}
+
+// ── TELA 4: GERAR CHECKLIST E RESULTADO ──
+function gerarChecklist() {
   var publico = document.getElementById('t-publico').value.trim();
   var dor     = document.getElementById('t-dor').value.trim();
   var res     = document.getElementById('t-res').value.trim();
-  var passos  = Array.from(document.querySelectorAll('.passo-input'))
-                  .map(function(i){ return i.value.trim(); })
-                  .filter(function(v){ return v !== ''; });
 
-  if (!publico || !dor || !res || passos.length < 3) {
-    if (!publico) document.getElementById('fm1').classList.add('bad');
-    if (!dor)     document.getElementById('fm2').classList.add('bad');
-    if (!res)     document.getElementById('fm3').classList.add('bad');
-    if (passos.length < 3) alert('Preenche pelo menos 3 passos do seu método.');
+  var itensProntos = itensChecklist.filter(function(_, idx){ return respostasChecklist[idx] === true; }).map(function(it){ return it.pronto; });
+  var itensFaltam  = itensChecklist.filter(function(_, idx){ return respostasChecklist[idx] !== true; }).map(function(it){ return it.falta; });
+
+  var outroDesafio = document.getElementById('v-outro-desafio').value.trim();
+  var desafioFinal = desafioEscolhido || outroDesafio || 'Não informado';
+
+  if (!desafioEscolhido && !outroDesafio) {
+    alert('Escolhe ou descreve qual é o seu maior desafio para continuar.');
     return;
   }
 
-  ['fm1','fm2','fm3'].forEach(function(id){ document.getElementById(id).classList.remove('bad'); });
+  // Navega para tela 5
+  goTo(5);
 
-  // Navega para tela 4
-  goTo(6);
-
-  // Preenche esboço
-  var nome  = document.getElementById('v-nome').value.trim();
-  var pn    = nome.split(' ')[0];
-  
-
+  // Preenche esboço do método (vindo da tela 2)
   var stmt = 'Eu ajudo <strong>' + publico + '</strong> que sofrem com <strong>' + dor + '</strong>, para que conquistem <strong>' + res + '</strong>.';
   document.getElementById('metodo-txt-s5').innerHTML = stmt;
 
-  var passosHTML = passos.map(function(p, i){
-    return '<div class="vi"><div class="vi-n">0'+(i+1)+'</div><div class="vi-t">'+p+'</div></div>';
-  }).join('');
-  document.getElementById('passos-esboço').innerHTML = '<div class="visions">' + passosHTML + '</div>';
+  // Preenche checklist de resultado
+  var prontosHTML = itensProntos.length > 0
+    ? itensProntos.map(function(p){ return '✓ ' + p; }).join('<br><br>')
+    : 'Nenhum item marcado como pronto ainda — e está tudo bem, é exatamente para isso que serve a estruturação.';
+  document.getElementById('checklist-prontos').innerHTML = prontosHTML;
+
+  var faltamHTML = itensFaltam.length > 0
+    ? itensFaltam.map(function(p){ return '○ ' + p; }).join('<br><br>')
+    : 'Você já tem tudo pronto! Agora é hora de validar e escalar.';
+  document.getElementById('checklist-faltam').innerHTML = faltamHTML;
+
+  // Preenche resultado do desafio
+  var fraseDesafio;
+  if (desafioFinal === 'Ter tempo para fazer') {
+    fraseDesafio = 'Seu maior desafio hoje é tempo. Isso é mais comum do que parece — e a boa notícia é que você não precisa fazer tudo sozinha, nem tudo de uma vez. A estruturação certa libera o seu tempo, não consome mais dele.';
+  } else if (desafioFinal === 'Ter clareza de como fazer') {
+    fraseDesafio = 'Seu maior desafio hoje é clareza. Você tem a bagagem, tem a experiência — o que falta é alguém te ajudando a organizar isso num formato que funcione. É exatamente para isso que existe a Caverna.';
+  } else {
+    fraseDesafio = 'Seu maior desafio hoje é: "' + desafioFinal + '". Seja qual for o motivo, ele não te impede de começar — só significa que você precisa de apoio certo no momento certo.';
+  }
+  document.getElementById('desafio-resultado-txt').textContent = fraseDesafio;
 }
 
 // ── TELA 7: MONTA LINK WHATSAPP ──
 function montarLinkWhatsApp() {
-  var nome      = document.getElementById('v-nome').value.trim();
-  var vSessao   = document.getElementById('v-sessao').value;
-  var vAtend    = document.getElementById('v-atend').value;
-  var vHoras    = document.getElementById('v-horas').value;
+  var nome       = document.getElementById('v-nome').value.trim();
+  var metodoNome = document.getElementById('v-metodo-nome') ? document.getElementById('v-metodo-nome').value.trim() : '';
+  var vSessao = '';
+  var vAtend  = '';
+  var vHoras  = '';
   var publico   = document.getElementById('t-publico').value.trim();
   var dor       = document.getElementById('t-dor').value.trim();
   var res       = document.getElementById('t-res').value.trim();
-  var passos    = Array.from(document.querySelectorAll('.passo-input'))
-                    .map(function(i){ return i.value.trim(); })
-                    .filter(function(v){ return v !== ''; });
-
-  // Diagnóstico financeiro
-  var fat    = parseFloat(vSessao) * parseFloat(vAtend);
-  var fatEsc = parseFloat(vAtend) * 2197;
-
   // Diagnóstico de método
   var tentou    = document.getElementById('d-tentou') ? document.getElementById('d-tentou').value.trim() : '';
   var repete    = document.getElementById('d-repete') ? document.getElementById('d-repete').value.trim() : '';
@@ -1131,16 +1250,21 @@ function montarLinkWhatsApp() {
   var classifEl = document.querySelector('.classif-card.on .choice-txt');
   var classif   = classifEl ? classifEl.textContent : 'Não informado';
 
-  var passosTexto = passos.map(function(p,i){ return '0'+(i+1)+'. '+p; }).join('\n');
+  // Checklist
+  var itensProntos = itensChecklist.filter(function(_, idx){ return respostasChecklist[idx] === true; }).map(function(it){ return it.pronto; });
+  var itensFaltam  = itensChecklist.filter(function(_, idx){ return respostasChecklist[idx] !== true; }).map(function(it){ return it.falta; });
+  var prontosTexto = itensProntos.length > 0 ? itensProntos.map(function(p){ return '✓ '+p; }).join('\n') : 'Nenhum item ainda';
+  var faltamTexto  = itensFaltam.length > 0 ? itensFaltam.map(function(p){ return '○ '+p; }).join('\n') : 'Tudo pronto!';
+
+  // Desafio
+  var outroDesafio = document.getElementById('v-outro-desafio') ? document.getElementById('v-outro-desafio').value.trim() : '';
+  var desafioFinal = desafioEscolhido || outroDesafio || 'Não informado';
 
   var msg =
     'Olá Jade! Fiz a ferramenta e quero compartilhar meu esboço completo.\n\n' +
-    '👤 *' + nome + '*\n\n' +
-    '*DIAGNÓSTICO FINANCEIRO*\n' +
-    '• Valor por sessão: R$ ' + parseFloat(vSessao).toLocaleString('pt-BR') + '\n' +
-    '• Atendimentos/mês: ' + vAtend + '\n' +
-    '• Faturamento atual: R$ ' + fat.toLocaleString('pt-BR') + '\n' +
-    '• Potencial com programa (R$ 2.197): R$ ' + fatEsc.toLocaleString('pt-BR') + '\n\n' +
+    '👤 *' + nome + '*\n' +
+    (metodoNome ? '✨ Método/Mentoria: ' + metodoNome + '\n' : '') +
+    (perfilQuiz ? '🎯 Perfil no quiz: ' + perfilQuiz + '\n' : '') + '\n' +
     '*DIAGNÓSTICO DE MÉTODO*\n' +
     '• O que ela já tentou: ' + tentou + '\n' +
     '• O que repete naturalmente: ' + repete + '\n' +
@@ -1154,26 +1278,22 @@ function montarLinkWhatsApp() {
     '• Para quem: ' + publico + '\n' +
     '• Dor: ' + dor + '\n' +
     '• Transformação: ' + res + '\n\n' +
-    '*PASSOS DO MÉTODO*\n' + passosTexto;
+    '*JÁ TEM PRONTO*\n' + prontosTexto + '\n\n' +
+    '*AINDA FALTA*\n' + faltamTexto + '\n\n' +
+    '*MAIOR DESAFIO*\n' + desafioFinal;
 
   document.getElementById('btn-whatsapp').href = 'https://wa.me/5598999012270?text=' + encodeURIComponent(msg);
 }
 
 // ── TELA 7: BAIXAR ESBOÇO ──
 function baixarPDF() {
-  var nome      = document.getElementById('v-nome').value.trim();
-  var vSessao   = document.getElementById('v-sessao').value;
-  var vAtend    = document.getElementById('v-atend').value;
+  var nome       = document.getElementById('v-nome').value.trim();
+  var metodoNome = document.getElementById('v-metodo-nome') ? document.getElementById('v-metodo-nome').value.trim() : '';
+  var vSessao = '';
+  var vAtend  = '';
   var publico   = document.getElementById('t-publico').value.trim();
   var dor       = document.getElementById('t-dor').value.trim();
   var res       = document.getElementById('t-res').value.trim();
-  var passos    = Array.from(document.querySelectorAll('.passo-input'))
-                    .map(function(i){ return i.value.trim(); })
-                    .filter(function(v){ return v !== ''; });
-
-  var fat    = parseFloat(vSessao) * parseFloat(vAtend);
-  var fatEsc = parseFloat(vAtend) * 2197;
-
   var tentou    = document.getElementById('d-tentou') ? document.getElementById('d-tentou').value.trim() : '';
   var repete    = document.getElementById('d-repete') ? document.getElementById('d-repete').value.trim() : '';
   var chave     = document.getElementById('d-chave') ? document.getElementById('d-chave').value.trim() : '';
@@ -1184,18 +1304,20 @@ function baixarPDF() {
   var classifEl = document.querySelector('.classif-card.on .choice-txt');
   var classif   = classifEl ? classifEl.textContent : 'Não informado';
 
-  var passosTexto = passos.map(function(p,i){ return '0'+(i+1)+'. '+p; }).join('\n');
+  var itensProntos = itensChecklist.filter(function(_, idx){ return respostasChecklist[idx] === true; }).map(function(it){ return it.pronto; });
+  var itensFaltam  = itensChecklist.filter(function(_, idx){ return respostasChecklist[idx] !== true; }).map(function(it){ return it.falta; });
+  var prontosTexto = itensProntos.length > 0 ? itensProntos.map(function(p){ return '✓ '+p; }).join('\n') : 'Nenhum item ainda';
+  var faltamTexto  = itensFaltam.length > 0 ? itensFaltam.map(function(p){ return '○ '+p; }).join('\n') : 'Tudo pronto!';
+
+  var outroDesafio = document.getElementById('v-outro-desafio') ? document.getElementById('v-outro-desafio').value.trim() : '';
+  var desafioFinal = desafioEscolhido || outroDesafio || 'Não informado';
 
   var conteudo =
     'ESBOÇO COMPLETO — FERRAMENTA JADE TORRES\n' +
     '==========================================\n\n' +
-    'Nome: ' + nome + '\n\n' +
-    'DIAGNÓSTICO FINANCEIRO\n' +
-    '----------------------\n' +
-    'Valor por sessão: R$ ' + parseFloat(vSessao).toLocaleString('pt-BR') + '\n' +
-    'Atendimentos/mês: ' + vAtend + '\n' +
-    'Faturamento atual: R$ ' + fat.toLocaleString('pt-BR') + '\n' +
-    'Potencial com programa (R$ 2.197): R$ ' + fatEsc.toLocaleString('pt-BR') + '\n\n' +
+    'Nome: ' + nome + '\n' +
+    (metodoNome ? 'Método/Mentoria: ' + metodoNome + '\n' : '') +
+    (perfilQuiz ? 'Perfil no quiz: ' + perfilQuiz + '\n' : '') + '\n' +
     'DIAGNÓSTICO DE MÉTODO\n' +
     '---------------------\n' +
     'O que ela já tentou: ' + tentou + '\n' +
@@ -1212,9 +1334,15 @@ function baixarPDF() {
     'Para quem: ' + publico + '\n' +
     'Dor que resolve: ' + dor + '\n' +
     'Transformação: ' + res + '\n\n' +
-    'PASSOS DO MÉTODO\n' +
-    '----------------\n' +
-    passosTexto + '\n\n' +
+    'JÁ TEM PRONTO\n' +
+    '-------------\n' +
+    prontosTexto + '\n\n' +
+    'AINDA FALTA\n' +
+    '-----------\n' +
+    faltamTexto + '\n\n' +
+    'MAIOR DESAFIO\n' +
+    '-------------\n' +
+    desafioFinal + '\n\n' +
     '==========================================\n' +
     'Gerado pela ferramenta de Jade Torres\n' +
     '12 Semanas no Ar · Caverna das Guerreiras';
