@@ -555,6 +555,11 @@ input::placeholder, textarea::placeholder { color: #a09060; font-style: italic; 
       <div class="err">Conta seu nome para continuar.</div>
     </div>
 
+    <div class="field" id="f-nicho">
+      <label>Qual seu nicho de atuação?</label>
+      <input type="text" id="v-nicho" placeholder="Ex: Nutrição, Terapia, Coaching de carreira…">
+    </div>
+
     <div class="field" id="f-metodo-nome">
       <label>Qual é o nome do seu movimento, método ou mentoria?</label>
       <input type="text" id="v-metodo-nome" placeholder="Ex: Método Reset, Mentoria Florescer, Academia das Guerreiras…">
@@ -1232,6 +1237,7 @@ function gerarChecklist() {
 function montarLinkWhatsApp() {
   var nome       = document.getElementById('v-nome').value.trim();
   var metodoNome = document.getElementById('v-metodo-nome') ? document.getElementById('v-metodo-nome').value.trim() : '';
+  var nicho      = document.getElementById('v-nicho') ? document.getElementById('v-nicho').value.trim() : '';
   var vSessao = '';
   var vAtend  = '';
   var vHoras  = '';
@@ -1264,6 +1270,7 @@ function montarLinkWhatsApp() {
     'Olá Jade! Fiz a ferramenta e quero compartilhar meu esboço completo.\n\n' +
     '👤 *' + nome + '*\n' +
     (metodoNome ? '✨ Método/Mentoria: ' + metodoNome + '\n' : '') +
+    (nicho ? '🧭 Nicho: ' + nicho + '\n' : '') +
     (perfilQuiz ? '🎯 Perfil no quiz: ' + perfilQuiz + '\n' : '') + '\n' +
     '*DIAGNÓSTICO DE MÉTODO*\n' +
     '• O que ela já tentou: ' + tentou + '\n' +
@@ -1289,6 +1296,7 @@ function montarLinkWhatsApp() {
 function baixarPDF() {
   var nome       = document.getElementById('v-nome').value.trim();
   var metodoNome = document.getElementById('v-metodo-nome') ? document.getElementById('v-metodo-nome').value.trim() : '';
+  var nicho      = document.getElementById('v-nicho') ? document.getElementById('v-nicho').value.trim() : '';
   var vSessao = '';
   var vAtend  = '';
   var publico   = document.getElementById('t-publico').value.trim();
@@ -1317,6 +1325,7 @@ function baixarPDF() {
     '==========================================\n\n' +
     'Nome: ' + nome + '\n' +
     (metodoNome ? 'Método/Mentoria: ' + metodoNome + '\n' : '') +
+    (nicho ? 'Nicho: ' + nicho + '\n' : '') +
     (perfilQuiz ? 'Perfil no quiz: ' + perfilQuiz + '\n' : '') + '\n' +
     'DIAGNÓSTICO DE MÉTODO\n' +
     '---------------------\n' +
