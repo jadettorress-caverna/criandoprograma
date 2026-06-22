@@ -565,27 +565,6 @@ input::placeholder, textarea::placeholder { color: #a09060; font-style: italic; 
       <input type="text" id="v-metodo-nome" placeholder="Ex: Método Reset, Mentoria Florescer, Academia das Guerreiras…">
     </div>
 
-    <div class="field" id="f-perfil">
-      <label>Qual foi o resultado do seu QUIZ?</label>
-      <div class="choices" style="margin-top:8px;">
-        <div class="choice" onclick="escolherPerfil(this)" data-perfil="A Sobrecarregada Competente">
-          <div class="dot"></div>
-          <span class="choice-txt">A Sobrecarregada Competente</span>
-        </div>
-        <div class="choice" onclick="escolherPerfil(this)" data-perfil="A Especialista Invisível">
-          <div class="dot"></div>
-          <span class="choice-txt">A Especialista Invisível</span>
-        </div>
-        <div class="choice" onclick="escolherPerfil(this)" data-perfil="A Empreendedora Dispersa">
-          <div class="dot"></div>
-          <span class="choice-txt">A Empreendedora Dispersa</span>
-        </div>
-        <div class="choice" onclick="escolherPerfil(this)" data-perfil="Não fiz o quiz ainda">
-          <div class="dot"></div>
-          <span class="choice-txt">Não fiz o quiz ainda</span>
-        </div>
-      </div>
-    </div>
 
     <button class="btn" id="btn-iniciar" onclick="iniciarFerramenta()">
       Iniciar o resumo do meu programa de mentoria <span class="arr">→</span>
@@ -1019,14 +998,6 @@ function iniciarFerramenta() {
   goTo(2);
 }
 
-// ── TELA 1: PERFIL DO QUIZ ──
-var perfilQuiz = '';
-function escolherPerfil(el) {
-  document.querySelectorAll('[data-perfil]').forEach(function(c){ c.classList.remove('on'); });
-  el.classList.add('on');
-  perfilQuiz = el.getAttribute('data-perfil');
-}
-
 // ── TELA 3: DIAGNÓSTICO DE MÉTODO ──
 function gerarDiagnosticoMetodo() {
   var tentou    = document.getElementById('d-tentou').value.trim();
@@ -1271,7 +1242,7 @@ function montarLinkWhatsApp() {
     '👤 *' + nome + '*\n' +
     (metodoNome ? '✨ Método/Mentoria: ' + metodoNome + '\n' : '') +
     (nicho ? '🧭 Nicho: ' + nicho + '\n' : '') +
-    (perfilQuiz ? '🎯 Perfil no quiz: ' + perfilQuiz + '\n' : '') + '\n' +
+    '\n' +
     '*DIAGNÓSTICO DE MÉTODO*\n' +
     '• O que ela já tentou: ' + tentou + '\n' +
     '• O que repete naturalmente: ' + repete + '\n' +
@@ -1326,7 +1297,7 @@ function baixarPDF() {
     'Nome: ' + nome + '\n' +
     (metodoNome ? 'Método/Mentoria: ' + metodoNome + '\n' : '') +
     (nicho ? 'Nicho: ' + nicho + '\n' : '') +
-    (perfilQuiz ? 'Perfil no quiz: ' + perfilQuiz + '\n' : '') + '\n' +
+    '\n' +
     'DIAGNÓSTICO DE MÉTODO\n' +
     '---------------------\n' +
     'O que ela já tentou: ' + tentou + '\n' +
