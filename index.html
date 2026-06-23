@@ -809,12 +809,29 @@ input::placeholder, textarea::placeholder { color: #a09060; font-style: italic; 
       </div>
     </div>
 
+    <button class="btn" id="btn-ver-checklist" onclick="gerarCheckliste4b()" style="margin-top:16px;">
+      Continuar <span class="arr">→</span>
+    </button>
+
+  </div>
+  <div class="footer-note">Ferramenta gratuita · Jade Torres · 12 Semanas no Ar</div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     TELA 4B — QUALIFICAÇÃO DE LEAD
+══════════════════════════════════════ -->
+<section class="screen" id="s4b">
+  <div class="inner">
+    <div class="ornament">quase lá · mais três perguntas</div>
+
+    <h2><span id="nome-s4b">—</span>, essa é a última etapa<br><em>para que você possa visualizar seu resultado.</em></h2>
+
     <div class="rule"></div>
 
-    <p style="font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-bottom:14px;">Uma última pergunta</p>
-    <h2 style="font-size:1.3rem; margin-bottom:20px;">Qual é o seu maior desafio hoje para ter um programa de mentoria trabalhando por você?</h2>
-
-    <div class="choices" id="desafio-grid" style="margin-bottom: 16px;">
+    <!-- Pergunta 0: Desafio -->
+    <p style="font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-bottom:14px;">Qual é o seu maior desafio hoje para ter um programa de mentoria trabalhando por você?</p>
+    <div class="choices" id="desafio-grid" style="margin-bottom:28px;">
       <div class="choice desafio-item" onclick="escolherDesafio(this, 'Ter tempo para fazer')">
         <div class="dot"></div>
         <span class="choice-txt">Ter tempo para fazer</span>
@@ -829,13 +846,60 @@ input::placeholder, textarea::placeholder { color: #a09060; font-style: italic; 
       </div>
     </div>
 
-    <div class="field" id="f-outro-desafio" style="display:none;">
+    <div class="field" id="f-outro-desafio" style="display:none; margin-bottom:20px;">
       <label>Conta qual é o seu motivo</label>
       <input type="text" id="v-outro-desafio" placeholder="Descreve em poucas palavras...">
     </div>
 
-    <button class="btn" id="btn-ver-checklist" onclick="gerarChecklist()" style="margin-top:16px;">
-      Ver meu resultado <span class="arr">→</span>
+    <!-- Pergunta 1 -->
+    <p style="font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-bottom:14px;">O quanto você já tentou montar seu programa de mentoria?</p>
+    <div class="choices" id="q1-grid" style="margin-bottom:28px;">
+      <div class="choice q1-item" onclick="selecionarQ(this,'q1-grid','q1')">
+        <div class="dot"></div>
+        <span class="choice-txt">Assisti cursos e imersões que não me deram resultado</span>
+      </div>
+      <div class="choice q1-item" onclick="selecionarQ(this,'q1-grid','q1')">
+        <div class="dot"></div>
+        <span class="choice-txt">Fiz mentoria e não cheguei a lugar nenhum</span>
+      </div>
+      <div class="choice q1-item" onclick="selecionarQ(this,'q1-grid','q1')">
+        <div class="dot"></div>
+        <span class="choice-txt">Ainda não investi em mentoria nesse objetivo</span>
+      </div>
+    </div>
+
+    <!-- Pergunta 2 -->
+    <p style="font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-bottom:14px;">Qual seu nível de pressa para montar seu programa e ser bem paga pela sua mentoria?</p>
+    <div class="choices" id="q2-grid" style="margin-bottom:28px;">
+      <div class="choice q2-item" onclick="selecionarQ(this,'q2-grid','q2')">
+        <div class="dot"></div>
+        <span class="choice-txt">Penso em montar meu programa em 2027 pois esse ano estou muito sobrecarregada de trabalho e assuntos pessoais</span>
+      </div>
+      <div class="choice q2-item" onclick="selecionarQ(this,'q2-grid','q2')">
+        <div class="dot"></div>
+        <span class="choice-txt">Quero priorizar o quanto antes, só falta encontrar uma mentoria que realmente me dê clareza de como fazer</span>
+      </div>
+      <div class="choice q2-item" onclick="selecionarQ(this,'q2-grid','q2')">
+        <div class="dot"></div>
+        <span class="choice-txt">Não tenho coragem de ser mentora e nem penso em me tornar uma</span>
+      </div>
+    </div>
+
+    <!-- Pergunta 3 -->
+    <p style="font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-bottom:14px;">Se você fosse investir hoje no seu projeto digital, por onde começaria?</p>
+    <div class="choices" id="q3-grid" style="margin-bottom:28px;">
+      <div class="choice q3-item" onclick="selecionarQ(this,'q3-grid','q3')">
+        <div class="dot"></div>
+        <span class="choice-txt">Prefiro métodos gravados, práticos que eu possa ir fazendo no meu tempo</span>
+      </div>
+      <div class="choice q3-item" onclick="selecionarQ(this,'q3-grid','q3')">
+        <div class="dot"></div>
+        <span class="choice-txt">Com certeza mentoria, pois o acompanhamento próximo acelera os resultados</span>
+      </div>
+    </div>
+
+    <button class="btn" onclick="avancarParaResultado()">
+      Ver meu resultado completo <span class="arr">→</span>
     </button>
 
   </div>
@@ -844,7 +908,7 @@ input::placeholder, textarea::placeholder { color: #a09060; font-style: italic; 
 
 
 <!-- ══════════════════════════════════════
-     TELA 6 — ESBOÇO + CTA FINAL
+     TELA 5 — ESBOÇO + CTA FINAL
 ══════════════════════════════════════ -->
 <section class="screen" id="s5">
   <div class="inner">
@@ -905,16 +969,8 @@ input::placeholder, textarea::placeholder { color: #a09060; font-style: italic; 
       </button>
     </a>
 
-    <div class="ok-msg" id="ok-msg" style="margin-top:12px;">
-      <p>✓ Arquivo gerado. Agora é só enviar para a Jade!</p>
-    </div>
 
     <div class="rule"></div>
-
-    <!-- Botão baixar -->
-    <button class="btn" onclick="baixarPDF()" style="width:100%; justify-content:center; padding:18px 36px; font-size:.72rem; margin-bottom:28px; box-shadow:0 0 24px rgba(201,168,76,0.35),0 0 48px rgba(201,168,76,0.15);">
-      Baixar meu esboço <span class="arr">↓</span>
-    </button>
 
     <!-- Bio da Jade -->
     <div class="jade-card">
@@ -957,6 +1013,12 @@ function goTo(n) {
     var elCheck = document.getElementById('nome-s4-check');
     if (elCheck && pnCheck) elCheck.textContent = pnCheck;
   }
+  if (n === '4b') {
+    var nome4b = document.getElementById('v-nome').value.trim();
+    var pn4b = nome4b ? nome4b.split(' ')[0] : '';
+    var el4b = document.getElementById('nome-s4b');
+    if (el4b && pn4b) el4b.textContent = pn4b;
+  }
 }
 
 function stepNum() {
@@ -981,7 +1043,7 @@ function voltar() {
 function atualizarBotaoVoltar() {
   var btn = document.getElementById('btn-back');
   if (!btn) return;
-  btn.style.display = (stepNum() >= 2) ? 'block' : 'none';
+  btn.style.display = (stepNum() >= 2 || cur === '4b') ? 'block' : 'none';
 }
 
 
@@ -1159,6 +1221,10 @@ function mostrarOutroDesafio(el) {
 
 // ── TELA 4: GERAR CHECKLIST E RESULTADO ──
 function gerarChecklist() {
+  gerarCheckliste4b();
+}
+
+function _gerarChecklist_legacy() {
   var publico = document.getElementById('t-publico').value.trim();
   var dor     = document.getElementById('t-dor').value.trim();
   var res     = document.getElementById('t-res').value.trim();
@@ -1196,6 +1262,72 @@ function gerarChecklist() {
   var fraseDesafio;
   if (desafioFinal === 'Ter tempo para fazer') {
     fraseDesafio = 'Seu maior desafio hoje é tempo. Isso é mais comum do que parece — e a boa notícia é que você não precisa fazer tudo sozinha, nem tudo de uma vez. A estruturação certa libera o seu tempo, não consome mais dele.';
+  } else if (desafioFinal === 'Ter clareza de como fazer') {
+    fraseDesafio = 'Seu maior desafio hoje é clareza. Você tem a bagagem, tem a experiência — o que falta é alguém te ajudando a organizar isso num formato que funcione. É exatamente para isso que existe a Caverna.';
+  } else {
+    fraseDesafio = 'Seu maior desafio hoje é: "' + desafioFinal + '". Seja qual for o motivo, ele não te impede de começar — só significa que você precisa de apoio certo no momento certo.';
+  }
+  document.getElementById('desafio-resultado-txt').textContent = fraseDesafio;
+}
+
+// ── TELA 4B: QUALIFICAÇÃO ──
+var respostasQ = {q1:'', q2:'', q3:''};
+
+function selecionarQ(el, gridId, key) {
+  document.querySelectorAll('#' + gridId + ' .choice').forEach(function(c){ c.classList.remove('on'); });
+  el.classList.add('on');
+  respostasQ[key] = el.querySelector('.choice-txt').textContent;
+}
+
+function gerarCheckliste4b() {
+  var publico = document.getElementById('t-publico').value.trim();
+  var dor     = document.getElementById('t-dor').value.trim();
+  var res     = document.getElementById('t-res').value.trim();
+
+  var itensProntos = itensChecklist.filter(function(_, idx){ return respostasChecklist[idx] === true; }).map(function(it){ return it.pronto; });
+  var itensFaltam  = itensChecklist.filter(function(_, idx){ return respostasChecklist[idx] !== true; }).map(function(it){ return it.falta; });
+  var outroDesafio = document.getElementById('v-outro-desafio') ? document.getElementById('v-outro-desafio').value.trim() : '';
+  var desafioFinal = desafioEscolhido || outroDesafio || '';
+
+  // Salva dados para usar na tela 5
+  window._checklistDados = { publico, dor, res, itensProntos, itensFaltam, desafioFinal };
+
+  goTo('4b');
+}
+
+function avancarParaResultado() {
+  var outroDesafio = document.getElementById('v-outro-desafio') ? document.getElementById('v-outro-desafio').value.trim() : '';
+  var desafio = desafioEscolhido || outroDesafio;
+  if (!desafio) { alert('Escolhe ou descreve qual é o seu maior desafio para continuar.'); return; }
+  goTo(5);
+
+  var d = window._checklistDados || {};
+  var publico = d.publico || document.getElementById('t-publico').value.trim();
+  var dor     = d.dor     || document.getElementById('t-dor').value.trim();
+  var res     = d.res     || document.getElementById('t-res').value.trim();
+  var itensProntos = d.itensProntos || [];
+  var itensFaltam  = d.itensFaltam  || [];
+  var desafioFinal = d.desafioFinal || '';
+
+  // Esboço do método
+  var stmt = 'Eu ajudo <strong>' + publico + '</strong> que sofrem com <strong>' + dor + '</strong>, para que conquistem <strong>' + res + '</strong>.';
+  document.getElementById('metodo-txt-s5').innerHTML = stmt;
+
+  // Checklist prontos
+  var prontosHTML = itensProntos.length > 0
+    ? itensProntos.map(function(p){ return '✓ ' + p; }).join('<br><br>')
+    : 'Nenhum item marcado como pronto ainda — e está tudo bem, é exatamente para isso que serve a estruturação.';
+  document.getElementById('checklist-prontos').innerHTML = prontosHTML;
+
+  var faltamHTML = itensFaltam.length > 0
+    ? itensFaltam.map(function(p){ return '○ ' + p; }).join('<br><br>')
+    : 'Você já tem tudo pronto! Agora é hora de validar e escalar.';
+  document.getElementById('checklist-faltam').innerHTML = faltamHTML;
+
+  // Desafio
+  var fraseDesafio;
+  if (desafioFinal === 'Ter tempo para fazer') {
+    fraseDesafio = 'Seu maior desafio hoje é tempo. A boa notícia é que você não precisa fazer tudo sozinha, nem tudo de uma vez. A estruturação certa libera o seu tempo, não consome mais dele.';
   } else if (desafioFinal === 'Ter clareza de como fazer') {
     fraseDesafio = 'Seu maior desafio hoje é clareza. Você tem a bagagem, tem a experiência — o que falta é alguém te ajudando a organizar isso num formato que funcione. É exatamente para isso que existe a Caverna.';
   } else {
@@ -1258,88 +1390,16 @@ function montarLinkWhatsApp() {
     '• Transformação: ' + res + '\n\n' +
     '*JÁ TEM PRONTO*\n' + prontosTexto + '\n\n' +
     '*AINDA FALTA*\n' + faltamTexto + '\n\n' +
-    '*MAIOR DESAFIO*\n' + desafioFinal;
+    '*MAIOR DESAFIO*\n' + desafioFinal + '\n\n' +
+    '*QUALIFICAÇÃO*\n' +
+    (respostasQ.q1 ? '• Tentativas anteriores: ' + respostasQ.q1 + '\n' : '') +
+    (respostasQ.q2 ? '• Urgência: ' + respostasQ.q2 + '\n' : '') +
+    (respostasQ.q3 ? '• Formato preferido: ' + respostasQ.q3 : '');
 
   document.getElementById('btn-whatsapp').href = 'https://wa.me/5598999012270?text=' + encodeURIComponent(msg);
 }
 
-// ── TELA 7: BAIXAR ESBOÇO ──
-function baixarPDF() {
-  var nome       = document.getElementById('v-nome').value.trim();
-  var metodoNome = document.getElementById('v-metodo-nome') ? document.getElementById('v-metodo-nome').value.trim() : '';
-  var nicho      = document.getElementById('v-nicho') ? document.getElementById('v-nicho').value.trim() : '';
-  var vSessao = '';
-  var vAtend  = '';
-  var publico   = document.getElementById('t-publico').value.trim();
-  var dor       = document.getElementById('t-dor').value.trim();
-  var res       = document.getElementById('t-res').value.trim();
-  var tentou    = document.getElementById('d-tentou') ? document.getElementById('d-tentou').value.trim() : '';
-  var repete    = document.getElementById('d-repete') ? document.getElementById('d-repete').value.trim() : '';
-  var chave     = document.getElementById('d-chave') ? document.getElementById('d-chave').value.trim() : '';
-  var diferente = document.getElementById('d-diferente') ? document.getElementById('d-diferente').value.trim() : '';
-  var ensinar   = document.getElementById('d-ensinar') ? document.getElementById('d-ensinar').value.trim() : '';
-  var normal    = document.getElementById('d-normal') ? document.getElementById('d-normal').value.trim() : '';
 
-  var classifEl = document.querySelector('.classif-card.on .choice-txt');
-  var classif   = classifEl ? classifEl.textContent : 'Não informado';
-
-  var itensProntos = itensChecklist.filter(function(_, idx){ return respostasChecklist[idx] === true; }).map(function(it){ return it.pronto; });
-  var itensFaltam  = itensChecklist.filter(function(_, idx){ return respostasChecklist[idx] !== true; }).map(function(it){ return it.falta; });
-  var prontosTexto = itensProntos.length > 0 ? itensProntos.map(function(p){ return '✓ '+p; }).join('\n') : 'Nenhum item ainda';
-  var faltamTexto  = itensFaltam.length > 0 ? itensFaltam.map(function(p){ return '○ '+p; }).join('\n') : 'Tudo pronto!';
-
-  var outroDesafio = document.getElementById('v-outro-desafio') ? document.getElementById('v-outro-desafio').value.trim() : '';
-  var desafioFinal = desafioEscolhido || outroDesafio || 'Não informado';
-
-  var conteudo =
-    'ESBOÇO COMPLETO — FERRAMENTA JADE TORRES\n' +
-    '==========================================\n\n' +
-    'Nome: ' + nome + '\n' +
-    (metodoNome ? 'Método/Mentoria: ' + metodoNome + '\n' : '') +
-    (nicho ? 'Nicho: ' + nicho + '\n' : '') +
-    '\n' +
-    'DIAGNÓSTICO DE MÉTODO\n' +
-    '---------------------\n' +
-    'O que ela já tentou: ' + tentou + '\n' +
-    'O que repete naturalmente: ' + repete + '\n' +
-    'Momento da virada: ' + chave + '\n' +
-    'Diferencial invisível: ' + diferente + '\n' +
-    'Por onde começa: ' + ensinar + '\n' +
-    'O que não aceita mais: ' + normal + '\n\n' +
-    'AUTOAVALIAÇÃO\n' +
-    '-------------\n' +
-    classif + '\n\n' +
-    'MÉTODO\n' +
-    '------\n' +
-    'Para quem: ' + publico + '\n' +
-    'Dor que resolve: ' + dor + '\n' +
-    'Transformação: ' + res + '\n\n' +
-    'JÁ TEM PRONTO\n' +
-    '-------------\n' +
-    prontosTexto + '\n\n' +
-    'AINDA FALTA\n' +
-    '-----------\n' +
-    faltamTexto + '\n\n' +
-    'MAIOR DESAFIO\n' +
-    '-------------\n' +
-    desafioFinal + '\n\n' +
-    '==========================================\n' +
-    'Gerado pela ferramenta de Jade Torres\n' +
-    '12 Semanas no Ar · Caverna das Guerreiras';
-
-  var blob = new Blob([conteudo], { type: 'text/plain;charset=utf-8' });
-  var url  = URL.createObjectURL(blob);
-  var a    = document.createElement('a');
-  a.href     = url;
-  a.download = 'esboco-metodo-' + nome.split(' ')[0].toLowerCase() + '.txt';
-  a.click();
-  URL.revokeObjectURL(url);
-
-  document.getElementById('ok-msg').style.display = 'block';
-  setTimeout(function() {
-    document.getElementById('ok-msg').scrollIntoView({ behavior: 'smooth' });
-  }, 100);
-}
 </script>
 </body>
 </html>
