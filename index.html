@@ -643,7 +643,7 @@ input::placeholder, textarea::placeholder { color: #a09060; font-style: italic; 
     </div>
 
     <div class="field" id="fd2">
-      <label>Qual parte do processo você repete sem perceber em quase todos os atendimentos?</label>
+      <label>Qual parte do seu método você repete em quase todos os seus atendimentos?</label>
       <textarea id="d-repete" placeholder="Ex: Sempre começo organizando a história da pessoa antes de qualquer estratégia…" style="min-height:72px;"></textarea>
       <div class="err">Descreve esse padrão.</div>
     </div>
@@ -655,19 +655,13 @@ input::placeholder, textarea::placeholder { color: #a09060; font-style: italic; 
     </div>
 
     <div class="field" id="fd4">
-      <label>O que você faz diferente da maioria sem nem considerar um diferencial?</label>
+      <label>O que você faz diferente da maioria e considera o seu diferencial?</label>
       <textarea id="d-diferente" placeholder="Ex: Eu nunca pulo a etapa de clareza antes de falar de estratégia…" style="min-height:72px;"></textarea>
       <div class="err">Descreve o que é natural para você.</div>
     </div>
 
-    <div class="field" id="fd5">
-      <label>Se amanhã você tivesse que ensinar seu processo para outra profissional aplicar, por onde ela começaria?</label>
-      <textarea id="d-ensinar" placeholder="Ex: Pelo diagnóstico da identidade — sem isso nada funciona…" style="min-height:72px;"></textarea>
-      <div class="err">Descreve o ponto de partida.</div>
-    </div>
-
     <div class="field" id="fd6">
-      <label>O que você mais acredita que sua cliente nunca deveria aceitar como normal?</label>
+      <label>O que você defende com convicção e quer que a sua cliente também acredite?</label>
       <textarea id="d-normal" placeholder="Ex: Trabalhar muito e ganhar pouco por falta de posicionamento…" style="min-height:72px;"></textarea>
       <div class="err">Descreve essa crença.</div>
     </div>
@@ -1069,7 +1063,7 @@ function gerarDiagnosticoMetodo() {
   var ensinar   = document.getElementById('d-ensinar').value.trim();
   var normal    = document.getElementById('d-normal').value.trim();
 
-  var fields = ['fd1','fd2','fd3','fd4','fd5','fd6'];
+  var fields = ['fd1','fd2','fd3','fd4','fd6'];
   fields.forEach(function(id){ document.getElementById(id).classList.remove('bad'); });
 
   var ok = true;
@@ -1077,7 +1071,6 @@ function gerarDiagnosticoMetodo() {
   if (!repete)    { document.getElementById('fd2').classList.add('bad'); ok = false; }
   if (!chave)     { document.getElementById('fd3').classList.add('bad'); ok = false; }
   if (!diferente) { document.getElementById('fd4').classList.add('bad'); ok = false; }
-  if (!ensinar)   { document.getElementById('fd5').classList.add('bad'); ok = false; }
   if (!normal)    { document.getElementById('fd6').classList.add('bad'); ok = false; }
   if (!ok) return;
 
@@ -1352,7 +1345,6 @@ function montarLinkWhatsApp() {
   var repete    = document.getElementById('d-repete') ? document.getElementById('d-repete').value.trim() : '';
   var chave     = document.getElementById('d-chave') ? document.getElementById('d-chave').value.trim() : '';
   var diferente = document.getElementById('d-diferente') ? document.getElementById('d-diferente').value.trim() : '';
-  var ensinar   = document.getElementById('d-ensinar') ? document.getElementById('d-ensinar').value.trim() : '';
   var normal    = document.getElementById('d-normal') ? document.getElementById('d-normal').value.trim() : '';
 
   // Classificação
@@ -1380,7 +1372,6 @@ function montarLinkWhatsApp() {
     '• O que repete naturalmente: ' + repete + '\n' +
     '• Momento da virada: ' + chave + '\n' +
     '• Diferencial invisível: ' + diferente + '\n' +
-    '• Por onde começa: ' + ensinar + '\n' +
     '• O que não aceita mais: ' + normal + '\n\n' +
     '*AUTOAVALIAÇÃO*\n' +
     classif + '\n\n' +
