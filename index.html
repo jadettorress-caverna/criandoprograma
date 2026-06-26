@@ -1060,7 +1060,6 @@ function gerarDiagnosticoMetodo() {
   var repete    = document.getElementById('d-repete').value.trim();
   var chave     = document.getElementById('d-chave').value.trim();
   var diferente = document.getElementById('d-diferente').value.trim();
-  var ensinar   = document.getElementById('d-ensinar').value.trim();
   var normal    = document.getElementById('d-normal').value.trim();
 
   var fields = ['fd1','fd2','fd3','fd4','fd6'];
@@ -1079,7 +1078,7 @@ function gerarDiagnosticoMetodo() {
 
   // Detecta padrão dominante
   var tipos = [];
-  var texto = (tentou + repete + chave + diferente + ensinar + normal).toLowerCase();
+  var texto = (tentou + repete + chave + diferente + normal).toLowerCase();
   if (texto.match(/transfor|result|mudan|vida|impacto/)) tipos.push('Transformação');
   if (texto.match(/estrutur|organiz|sistema|método|passo|etapa/)) tipos.push('Estrutura');
   if (texto.match(/process|jornada|caminho|sequenc/)) tipos.push('Processo');
@@ -1091,8 +1090,7 @@ function gerarDiagnosticoMetodo() {
     '<strong>O que você repete naturalmente:</strong><br>' + repete + '<br><br>' +
     '<strong>O momento da virada:</strong><br>' + chave + '<br><br>' +
     '<strong>Seu diferencial invisível:</strong><br>' + diferente + '<br><br>' +
-    '<strong>Por onde seu processo começa:</strong><br>' + ensinar + '<br><br>' +
-    '<strong>O que você não aceita mais como normal:</strong><br>' + normal;
+        '<strong>O que você não aceita mais como normal:</strong><br>' + normal;
 
   var frase = pn + ', seu padrão indica uma base forte de <strong>' + tipos.join(' + ') +
     '</strong>. Você já conduz pessoas por um caminho com começo, meio e fim. Agora vamos transformar isso num método ensinável.';
